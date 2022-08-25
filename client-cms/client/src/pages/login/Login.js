@@ -5,7 +5,9 @@ import { Layout } from "../../layout/Layout";
 export const Login = () => {
   return (
     <Layout>
-      <LoginForm />
+      <div className="reg-form d-flex justify-content-center">
+        <LoginForm />
+      </div>
     </Layout>
   );
 };
