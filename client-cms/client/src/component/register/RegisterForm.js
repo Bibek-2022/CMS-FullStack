@@ -17,16 +17,6 @@ export const RegisterForm = () => {
             />
           </div>
           <div className="form-group mt-3">
-            <label>First Name</label>
-            <input
-              type="text"
-              name="fname"
-              className="form-control mt-1"
-              placeholder="Enter First Name"
-              //   onChange={handleOnChange}
-            />
-          </div>
-          <div className="form-group mt-3">
             <label>Last Name</label>
             <input
               type="text"
