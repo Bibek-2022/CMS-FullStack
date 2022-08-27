@@ -1,19 +1,25 @@
 import "dotenv/config";
 import express from "express";
 import helmet from "helmet";
+import morgan from "morgan";
 import cors from "cors";
 import { mongoConnect } from "./src/config/dbConfig.js";
 
 const app = express();
 const PORT = process.env.PORT || 8001;
-// middleware
+// user middleware
+app.use(cors());
+app.use(helmet());
+app.use(morgan("tiny"));
+
+app.use(express.json());
 
 // connection to DB
 mongoConnect();
 
 import loginRouter from "./src/routers/loginRouter.js";
 // Routers
-app.use("/api/v1/login", loginRouter);
+app.use("/api/v1/register", loginRouter);
 
 /* The above code is creating a server and listening to port . */
 app.get("/", (req, res) => {

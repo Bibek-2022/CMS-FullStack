@@ -1,0 +1,16 @@
+
+### Client User Register 
+
+POST http://localhost:8001/api/v1/register
+Content-Type: application/json
+
+{
+    "fName":"Bibek",
+    "lName": "Shrestha",
+    "dob": "2020-02-20",
+    "phone":"044444444",
+    "email": "asdfasdf@gmail.com",
+    "address": "Sydney",
+    "password": "123dsf45",
+    "address":"sydney"
+}
