@@ -2,6 +2,8 @@ import express from "express";
 import { comparePassword, hashPassword } from "../helpers/bcryptHelper.js";
 import { createNewUser } from "../models/clientUser/ClientModel.js";
 import { v4 as uuidv4 } from "uuid";
+import { sendAdminUserVerificationMail } from "../helpers/emailHelper.js";
+
 const route = express.Router();
 
 route.post("/", async (req, res, next) => {
@@ -13,6 +15,7 @@ route.post("/", async (req, res, next) => {
     const result = await createNewUser(req.body);
 
     if (result?._id) {
+      sendAdminUserVerificationMail(result);
       return res.json({
         status: "success",
         message: "Please verify your account",
