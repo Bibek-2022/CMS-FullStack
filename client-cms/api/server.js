@@ -17,9 +17,12 @@ app.use(express.json());
 // connection to DB
 mongoConnect();
 
+import registerRouter from "./src/routers/registerRouter.js";
 import loginRouter from "./src/routers/loginRouter.js";
+
 // Routers
-app.use("/api/v1/register", loginRouter);
+app.use("/api/v1/register", registerRouter);
+app.use("/api/v1/login", loginRouter);
 
 /* The above code is creating a server and listening to port . */
 app.get("/", (req, res) => {

@@ -14,3 +14,17 @@ Content-Type: application/json
     "password": "123dsf45",
     "address":"sydney"
 }
+
+
+
+### Client User Login 
+
+POST http://localhost:8001/api/v1/login
+Content-Type: application/json
+
+{
+    "email": "bibekheroes@gmail.com",
+    "password": "123dsf45"
+}
+
+
