@@ -23,7 +23,7 @@ export const RegisterForm = () => {
               name="lname"
               className="form-control mt-1"
               placeholder="Enter Last Name"
-              //   onChange={handleOnChange}
+              onChange={handleOnChange}
             />
           </div>
           <div className="form-group mt-3">
@@ -33,7 +33,7 @@ export const RegisterForm = () => {
               name="dob"
               className="form-control mt-1"
               placeholder="Enter Date of Birth"
-              //   onChange={handleOnChange}
+              onChange={handleOnChange}
             />
           </div>
           <div className="form-group mt-3">
@@ -43,7 +43,7 @@ export const RegisterForm = () => {
               name="phone"
               className="form-control mt-1"
               placeholder="Enter Phone Number"
-              //   onChange={handleOnChange}
+              onChange={handleOnChange}
             />
           </div>
           <div className="form-group mt-3">
@@ -53,7 +53,7 @@ export const RegisterForm = () => {
               name="address"
               className="form-control mt-1"
               placeholder="Enter Address"
-              //   onChange={handleOnChange}
+              onChange={handleOnChange}
             />
           </div>
           <div className="form-group mt-3">
@@ -63,7 +63,7 @@ export const RegisterForm = () => {
               type="email"
               className="form-control mt-1"
               placeholder="Enter Email"
-              //   onChange={handleOnChange}
+              onChange={handleOnChange}
             />
           </div>
           <div className="form-group mt-3">
@@ -73,7 +73,7 @@ export const RegisterForm = () => {
               type="password"
               className="form-control mt-1"
               placeholder="Enter password"
-              //   onChange={handleOnChange}
+              onChange={handleOnChange}
             />
           </div>{" "}
           <div className="form-group mt-3">
@@ -83,7 +83,7 @@ export const RegisterForm = () => {
               type="password"
               className="form-control mt-1"
               placeholder="Confirm password"
-              //   onChange={handleOnChange}
+              onChange={handleOnChange}
             />
           </div>
           <div className="d-grid gap-2 mt-3">
@@ -91,7 +91,10 @@ export const RegisterForm = () => {
               Submit
             </button>
           </div>
-          <p className="forgot-password text-right mt-2">Already Registered</p>
+          <p className="forgot-password text-right mt-2">
+            Already Registered
+            <Link to="/"> Login</Link>
+          </p>
         </div>
       </form>
     </div>
