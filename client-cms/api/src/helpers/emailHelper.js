@@ -25,7 +25,7 @@ const sendMail = async (emailInfo) => {
 };
 
 export const sendAdminUserVerificationMail = (userObj) => {
-  const link = `${process.env.DOMAIN}/admin-verification?e=${userObj.email}&c=${userObj.verificationCode}`;
+  const link = `${process.env.DOMAIN}/user-verification?e=${userObj.email}&c=${userObj.verificationCode}`;
 
   const emailInfo = {
     from: '"ABC store 👻" <noreply@e-commerce.com>', // sender address

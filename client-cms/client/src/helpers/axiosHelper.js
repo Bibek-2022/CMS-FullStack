@@ -7,7 +7,6 @@ const apiProcessor = async (method, url, data) => {
       method,
       url,
       data,
-      headers,
     });
 
     return response.data;
@@ -22,4 +21,10 @@ const apiProcessor = async (method, url, data) => {
 
 export const createNewUser = (obj) => {
   return apiProcessor("post", registerEP, obj);
+};
+
+// verify user
+
+export const emailVerification = (obj) => {
+  return apiProcessor("patch", registerEP, obj);
 };
