@@ -1,6 +1,7 @@
 import axios from "axios";
 const rootUrl = "http://localhost:8001/api/v1";
 const registerEP = "http://localhost:8001/api/v1/register";
+const loginEP = "http://localhost:8001/api/v1/user";
 const apiProcessor = async (method, url, data) => {
   try {
     const response = await axios({
@@ -27,4 +28,9 @@ export const createNewUser = (obj) => {
 
 export const emailVerification = (obj) => {
   return apiProcessor("patch", registerEP, obj);
+};
+
+// login User
+export const loginUser = (obj) => {
+  return apiProcessor("post", loginEP, obj);
 };

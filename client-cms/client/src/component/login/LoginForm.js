@@ -1,6 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
+import { loginUser } from "../../helpers/axiosHelper";
 
 export const LoginForm = () => {
+  const [form, setForm] = useState({});
+
+  const origin = "/dashboard";
+  const handleOnChange = (e) => {
+    const { name, value } = e.target;
+    setForm({ ...form, [name]: value });
+    // console.log(form);
+  };
+
+  const handleOnSubmit = async(e) => {
+    e.preventDefault();
+    console.log(form);
+   const result = await loginUser(form);
+   result._id && (window.location.href = origin);
+  };
   return (
     <div className="Auth-form-container">
       <form className="Auth-form">
@@ -13,7 +29,7 @@ export const LoginForm = () => {
               name="email"
               className="form-control mt-1"
               placeholder="Enter email"
-              //   onChange={handleOnChange}
+              onChange={handleOnChange}
             />
           </div>
           <div className="form-group mt-3">
@@ -23,7 +39,7 @@ export const LoginForm = () => {
               type="password"
               className="form-control mt-1"
               placeholder="Enter password"
-              //   onChange={handleOnChange}
+              onChange={handleOnChange}
             />
           </div>
           <div className="d-grid gap-2 mt-3">

@@ -51,15 +51,14 @@ route.patch("/", async (req, res, next) => {
       if (result?._id) {
         return res.json({
           status: "success",
-          message: "You account has been activate, you can sign in.",
+          message: "You account has been activated, you can now Sign in.",
         });
       }
-    }
-
-    res.json({
-      status: "error",
-      message: "Invalid or expired link",
-    });
+    } else
+      return res.json({
+        status: "error",
+        message: "Invalid or expired link",
+      });
 
     console.log(req.body);
   } catch (error) {
