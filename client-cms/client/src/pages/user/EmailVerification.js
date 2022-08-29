@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import { useSearchParams } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 // import { emailVerificationAdminUser } from "../../helper/axios-helper";
 
 // import { emailVerificationAdminUser } from "../components/helpers/axiosHelper";
@@ -44,6 +44,7 @@ export const EmailVerification = () => {
 
           {isLoading && <Spinner variant="primary" animation="border" />}
         </div>
+        <Link to={"/login"}>Login</Link>
       </div>
     </Layout>
   );

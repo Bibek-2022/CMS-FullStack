@@ -1,9 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { createNewUser } from "../../helpers/axiosHelper";
 
 export const RegisterForm = () => {
+  const [form, setForm] = useState({});
+  const handleOnChange = (e) => {
+    const { name, value } = e.target;
+    setForm({
+      ...form,
+      [name]: value,
+    });
+  };
+
+  const handleOnSubmit = async (e) => {
+    e.preventDefault();
+    const { confirmPassword, ...rest } = form;
+    const response = createNewUser(rest);
+    toast.promise(response, { pending: "Please wait ..." });
+    const { status, message } = await response;
+    toast[status](message);
+  };
   return (
     <div className="Auth-form-container tops">
-      <form className="Auth-form">
+      <form className="Auth-form" onSubmit={handleOnSubmit}>
         <div className="Auth-form-content">
           <h3 className="Auth-form-title">Register</h3>
           <div className="form-group mt-3">
