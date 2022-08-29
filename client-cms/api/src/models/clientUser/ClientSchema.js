@@ -36,10 +36,9 @@ const ClientSchema = new mongoose.Schema(
     },
     dob: {
       type: Date,
-      required: true,
       default: null,
     },
-    Address: {
+    address: {
       type: String,
       maxLength: 50,
     },

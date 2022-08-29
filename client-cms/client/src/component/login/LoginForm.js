@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { loginUser } from "../../helpers/axiosHelper";
 
 export const LoginForm = () => {
@@ -11,15 +12,15 @@ export const LoginForm = () => {
     // console.log(form);
   };
 
-  const handleOnSubmit = async(e) => {
+  const handleOnSubmit = async (e) => {
     e.preventDefault();
     console.log(form);
-   const result = await loginUser(form);
-   result._id && (window.location.href = origin);
+    const result = await loginUser(form);
+    result._id && (window.location.href = origin);
   };
   return (
     <div className="Auth-form-container">
-      <form className="Auth-form">
+      <form className="Auth-form" onSubmit={handleOnSubmit}>
         <div className="Auth-form-content">
           <h3 className="Auth-form-title">Sign In</h3>
           <div className="form-group mt-3">
@@ -47,8 +48,13 @@ export const LoginForm = () => {
               Submit
             </button>
           </div>
-          <p className="forgot-password text-right mt-2">
-            Forgot <a href="#">password?</a>
+          <p className="d-flex justify-content-between mt-2">
+            <div>
+              <Link to="/forgot-password">Forgot password</Link>
+            </div>
+            <div>
+              <Link to="/register">Register</Link>
+            </div>
           </p>
         </div>
       </form>

@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 import { createNewUser } from "../../helpers/axiosHelper";
 
 export const RegisterForm = () => {
+  const origin = "/verify";
   const [form, setForm] = useState({});
   const handleOnChange = (e) => {
     const { name, value } = e.target;
@@ -18,7 +20,10 @@ export const RegisterForm = () => {
     const response = createNewUser(rest);
     toast.promise(response, { pending: "Please wait ..." });
     const { status, message } = await response;
+    console.log(status, message);
     toast[status](message);
+    e.target.reset();
+    status === "success" && (window.location.href = origin);
   };
   return (
     <div className="Auth-form-container tops">
@@ -29,17 +34,17 @@ export const RegisterForm = () => {
             <label>First Name</label>
             <input
               type="text"
-              name="fname"
+              name="fName"
               className="form-control mt-1"
               placeholder="Enter First Name"
-              //   onChange={handleOnChange}
+              onChange={handleOnChange}
             />
           </div>
           <div className="form-group mt-3">
             <label>Last Name</label>
             <input
               type="text"
-              name="lname"
+              name="lName"
               className="form-control mt-1"
               placeholder="Enter Last Name"
               onChange={handleOnChange}
