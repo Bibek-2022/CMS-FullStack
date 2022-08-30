@@ -28,3 +28,12 @@ Content-Type: application/json
 }
 
 
+### Request OTP
+POST http://localhost:8001/api/v1/register/otp
+Content-Type: application/json
+
+{
+    "email": "bibekheroes@gmail.com"
+}
+
+
