@@ -6,9 +6,16 @@ import {
   updateUser,
 } from "../models/clientUser/ClientModel.js";
 import { v4 as uuidv4 } from "uuid";
-import { sendEmailVerification, sendOTP } from "../helpers/sendGrid.js";
+import {
+  notification,
+  sendEmailVerification,
+  sendOTP,
+} from "../helpers/sendGrid.js";
 import { otpGenerator } from "../utils/otpGenerator.js";
-import { insertSession } from "../models/session/SessionModel.js";
+import {
+  deleteSession,
+  insertSession,
+} from "../models/session/SessionModel.js";
 // import { sendAdminUserVerificationMail } from "../helpers/emailHelper.js";
 
 const route = express.Router();
@@ -120,26 +127,25 @@ route.patch("/new-password", async (req, res, next) => {
       associate: email,
       type: "updatePassword",
     };
-    const user = await getOneUser({ email });
-    if (user?._id) {
-      const filter = { email, token };
+
+    const isDeleted = await deleteSession(filter);
+    if (isDeleted?._id) {
       const obj = {
         password: hashPassword(password),
       };
-
-      const result = await updateUser(filter, obj);
-
+      const result = await updateUser({ email }, obj);
       if (result?._id) {
+        notification({
+          email,
+          text: "Your password has been changed successfully.",
+          subject: "Password Changed",
+        });
         return res.json({
           status: "success",
-          message: "Password updated",
+          message: "Password updated successfully",
         });
       }
     }
-    res.json({
-      status: "error",
-      message: "Password not updated",
-    });
   } catch (error) {
     next(error);
   }
