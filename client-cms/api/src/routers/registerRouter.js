@@ -8,6 +8,7 @@ import {
 import { v4 as uuidv4 } from "uuid";
 import { sendEmailVerification, sendOTP } from "../helpers/sendGrid.js";
 import { otpGenerator } from "../utils/otpGenerator.js";
+import { insertSession } from "../models/session/SessionModel.js";
 // import { sendAdminUserVerificationMail } from "../helpers/emailHelper.js";
 
 const route = express.Router();
@@ -78,22 +79,66 @@ route.post("/otp", async (req, res, next) => {
     const user = await getOneUser({ email });
     if (user?._id) {
       const otp = otpGenerator();
-      let obj = {
-        email,
-        otp,
+
+      const obj1 = {
+        token: otp,
+        associate: email,
+        type: "updatePassword",
       };
 
-      sendOTP(obj);
-      return res.json({
-        status: "success",
-        message: "OTP sent to your email",
-        otp,
-      });
+      const result = await insertSession(obj1);
+      if (result?._id) {
+        let obj = {
+          email,
+          otp,
+        };
+        sendOTP(obj);
+        return res.json({
+          status: "success",
+          message: "OTP sent to your email",
+          otp,
+        });
+      }
     }
     res.json({
       status: "error",
       message: "OTP not sent",
       otp,
+    });
+  } catch (error) {
+    next(error);
+  }
+});
+
+// new password
+
+route.patch("/new-password", async (req, res, next) => {
+  try {
+    const { email, password, otp } = req.body;
+    const filter = {
+      token: otp,
+      associate: email,
+      type: "updatePassword",
+    };
+    const user = await getOneUser({ email });
+    if (user?._id) {
+      const filter = { email, token };
+      const obj = {
+        password: hashPassword(password),
+      };
+
+      const result = await updateUser(filter, obj);
+
+      if (result?._id) {
+        return res.json({
+          status: "success",
+          message: "Password updated",
+        });
+      }
+    }
+    res.json({
+      status: "error",
+      message: "Password not updated",
     });
   } catch (error) {
     next(error);
