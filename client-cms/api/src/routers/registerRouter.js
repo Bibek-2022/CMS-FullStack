@@ -137,7 +137,7 @@ route.patch("/new-password", async (req, res, next) => {
       if (result?._id) {
         notification({
           email,
-          text: "Your password has been changed successfully.",
+          text: "Your password has been changed successfully. If this is not you, please contact us immediately.",
           subject: "Password Changed",
         });
         return res.json({

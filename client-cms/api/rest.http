@@ -37,3 +37,13 @@ Content-Type: application/json
 }
 
 
+### Request OTP
+POST http://localhost:8001/api/v1/register/otp-verify
+Content-Type: application/json
+
+{
+    "token": "798281"
+}
+
+
+
