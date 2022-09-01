@@ -1,4 +1,4 @@
-import SessionSchema from "./SessionSchema";
+import SessionSchema from "./SessionSchema.js";
 
 /**
  * It takes an object as an argument, and then it returns a promise that resolves to the result of
