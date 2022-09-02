@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { loginUser } from "../../helpers/axiosHelper";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
-import { loginAction } from "./loginAction";
+import { loginAction } from "../../pages/login/loginAction";
 
 export const LoginForm = () => {
   const dispatch = useDispatch();

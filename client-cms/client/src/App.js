@@ -5,12 +5,14 @@ import { Register } from "./pages/register/Register";
 import { EmailVerification } from "./pages/user/EmailVerification.js";
 import { Dashboard } from "./pages/dashboard/Dashboard.js";
 import { VerifyEmail } from "./component/register/VerifyEmail";
+import { ForgotPassword } from "./pages/register/ForgotPassword";
 function App() {
   return (
     <div>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Dashboard />} />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/verify" element={<VerifyEmail />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
