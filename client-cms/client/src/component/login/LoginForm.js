@@ -1,11 +1,24 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { loginUser } from "../../helpers/axiosHelper";
+import { useDispatch, useSelector } from "react-redux";
+import { useLocation, useNavigate } from "react-router-dom";
+import { loginAction } from "./loginAction";
 
 export const LoginForm = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { user } = useSelector((state) => state.user);
+  const location = useLocation();
   const [form, setForm] = useState({});
 
-  const origin = "/dashboard";
+  useEffect(() => {
+    user._id && navigate(origin);
+  }, [user, navigate]);
+
+  const origin =
+    (location.state && location.state.from && location.state.from.pathname) ||
+    "/";
   const handleOnChange = (e) => {
     const { name, value } = e.target;
     setForm({ ...form, [name]: value });
@@ -15,7 +28,8 @@ export const LoginForm = () => {
   const handleOnSubmit = async (e) => {
     e.preventDefault();
     console.log(form);
-    const result = await loginUser(form);
+    // const result = await loginUser(form);
+    dispatch(loginAction(form));
     result._id && (window.location.href = origin);
   };
   return (

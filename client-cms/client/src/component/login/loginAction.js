@@ -2,15 +2,15 @@ import { loginUser } from "../../helpers/axiosHelper";
 import { setUser } from "./loginSlice";
 
 export const loginAction = (obj) => async (dispatch) => {
-  const results = loginUser(obj);
-  toast.promise(results, {
-    pending: "Please Wait",
-  });
-
-  const { status, message, result } = await results;
-  toast[status](message);
+  const results = await loginUser(obj);
+  //   toast.promise(results, {
+  //     pending: "Please Wait",
+  //   });
+  console.log(results);
+  const { status, message, result } = results;
+  //   toast[status](message);
 
   if (status === "success") {
-    dispatch(login(result));
+    dispatch(setUser(result));
   }
 };

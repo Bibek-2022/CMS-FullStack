@@ -13,16 +13,19 @@ route.post("/", async (req, res, next) => {
       const compare = comparePassword(password, result.password);
       result.password = undefined;
       if (compare) {
-        res.status(200).json({
-          status: "success",
-          message: "Login success",
-          result,
-        });
-      } else {
-        res.status(400).json({
-          status: "error",
-          message: "Please activate your account",
-        });
+        if (result.status === "active") {
+          return res.json({
+            status: "success",
+            message: "Login success",
+            result,
+          });
+        } else {
+          return res.json({
+            status: "error",
+            message:
+              "Your account is inactive, Please check your email and follow the instruction to very the account.",
+          });
+        }
       }
     }
     res.json({

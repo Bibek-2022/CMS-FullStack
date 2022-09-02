@@ -1,7 +1,7 @@
 import axios from "axios";
 const rootUrl = "http://localhost:8001/api/v1";
 const registerEP = "http://localhost:8001/api/v1/register";
-const loginEP = "http://localhost:8001/api/v1/user";
+const loginEP = "http://localhost:8001/api/v1/login";
 const apiProcessor = async (method, url, data) => {
   try {
     const response = await axios({
