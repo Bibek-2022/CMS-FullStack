@@ -83,6 +83,7 @@ route.patch("/", async (req, res, next) => {
 route.post("/otp", async (req, res, next) => {
   try {
     const { email } = req.body;
+    console.log(email);
     const user = await getOneUser({ email });
     if (user?._id) {
       const otp = otpGenerator();

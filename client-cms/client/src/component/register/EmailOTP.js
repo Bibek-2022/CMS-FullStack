@@ -1,8 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
+import { otpRequest } from "../../helpers/axiosHelper";
 
 export const EmailOTP = () => {
+  const [email, setEmail] = useState("");
+  const handleOnChange = (e) => {
+    const { name, value } = e.target;
+    setEmail({ ...email, [name]: value });
+  };
   const handleOnSubmit = async (e) => {
     e.preventDefault();
+    const result = await otpRequest(email);
+    result.status === "success" && alert(result.message);
   };
   return (
     <div className="Auth-form-container">
@@ -12,27 +20,9 @@ export const EmailOTP = () => {
           <div className="form-group mt-3 p-4">
             <input
               type="text"
-              name="otp"
+              name="fName"
               className="form-control mt-1"
-              placeholder="OTP"
-              onChange={handleOnChange}
-            />
-          </div>
-          <div className="form-group mt-3 p-4">
-            <input
-              type="text"
-              name="password"
-              className="form-control mt-1"
-              placeholder="New Password"
-              onChange={handleOnChange}
-            />
-          </div>
-          <div className="form-group mt-3 p-4">
-            <input
-              type="text"
-              name="confirmPassword"
-              className="form-control mt-1"
-              placeholder="Confirm Password"
+              placeholder="Email"
               onChange={handleOnChange}
             />
           </div>

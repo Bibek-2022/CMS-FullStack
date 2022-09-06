@@ -2,6 +2,7 @@ import axios from "axios";
 const rootUrl = "http://localhost:8001/api/v1";
 const registerEP = "http://localhost:8001/api/v1/register";
 const loginEP = "http://localhost:8001/api/v1/login";
+const otpEP = rootUrl + "/register/otp";
 const apiProcessor = async (method, url, data) => {
   try {
     const response = await axios({
@@ -33,4 +34,9 @@ export const emailVerification = (obj) => {
 // login User
 export const loginUser = (obj) => {
   return apiProcessor("post", loginEP, obj);
+};
+
+// OTP request
+export const otpRequest = (obj) => {
+  return apiProcessor("post", otpEP, obj);
 };
