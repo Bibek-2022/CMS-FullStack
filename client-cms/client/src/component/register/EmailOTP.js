@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import { otpRequest } from "../../helpers/axiosHelper";
+import { ResetPassword } from "../../component/register/ResetPassword.js";
+import { useLocation, useNavigate } from "react-router-dom";
 
 export const EmailOTP = () => {
+  const [showForm, setShowForm] = useState("otp"); // otp || password
   const [email, setEmail] = useState("");
   const handleOnChange = (e) => {
     const { name, value } = e.target;
@@ -10,9 +13,11 @@ export const EmailOTP = () => {
   const handleOnSubmit = async (e) => {
     e.preventDefault();
     const result = await otpRequest(email);
-    result.status === "success" && alert(result.message);
+    result.status === "success" &&
+      setShowForm("reset") &&
+      alert(result.message);
   };
-  return (
+  return showForm === "otp" ? (
     <div className="Auth-form-container">
       <form className="Auth-form" onSubmit={handleOnSubmit}>
         <div className="Auth-form-content p-4">
@@ -20,9 +25,49 @@ export const EmailOTP = () => {
           <div className="form-group mt-3 p-4">
             <input
               type="text"
-              name="fName"
+              name="email"
               className="form-control mt-1"
               placeholder="Email"
+              onChange={handleOnChange}
+            />
+          </div>
+          <div className="d-grid gap-2 mt-3">
+            <button type="submit" className="btn btn-primary">
+              Submit
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  ) : (
+    <div className="Auth-form-container">
+      <form className="Auth-form" onSubmit={handleOnSubmit}>
+        <div className="Auth-form-content p-4">
+          <h3 className="Auth-form-title">Enter your Email </h3>
+          <div className="form-group mt-3 p-4">
+            <input
+              type="text"
+              name="otp"
+              className="form-control mt-1"
+              placeholder="OTP"
+              onChange={handleOnChange}
+            />
+          </div>
+          <div className="form-group mt-3 p-4">
+            <input
+              type="text"
+              name="password"
+              className="form-control mt-1"
+              placeholder="New Password"
+              onChange={handleOnChange}
+            />
+          </div>
+          <div className="form-group mt-3 p-4">
+            <input
+              type="text"
+              name="confirmPassword"
+              className="form-control mt-1"
+              placeholder="Confirm Password"
               onChange={handleOnChange}
             />
           </div>
