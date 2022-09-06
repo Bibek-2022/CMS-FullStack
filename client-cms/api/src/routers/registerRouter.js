@@ -123,6 +123,7 @@ route.post("/otp", async (req, res, next) => {
 route.patch("/new-password", async (req, res, next) => {
   try {
     const { email, password, otp } = req.body;
+    console.log(email, password, otp);
     const filter = {
       token: otp,
       associate: email,

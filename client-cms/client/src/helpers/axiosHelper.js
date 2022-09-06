@@ -3,6 +3,7 @@ const rootUrl = "http://localhost:8001/api/v1";
 const registerEP = "http://localhost:8001/api/v1/register";
 const loginEP = "http://localhost:8001/api/v1/login";
 const otpEP = rootUrl + "/register/otp";
+const resetEP = rootUrl + "/register/new-password";
 const apiProcessor = async (method, url, data) => {
   try {
     const response = await axios({
@@ -39,4 +40,9 @@ export const loginUser = (obj) => {
 // OTP request
 export const otpRequest = (obj) => {
   return apiProcessor("post", otpEP, obj);
+};
+
+// reset password
+export const resetPassword = (obj) => {
+  return apiProcessor("patch", resetEP, obj);
 };
