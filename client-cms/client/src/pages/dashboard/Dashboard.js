@@ -4,10 +4,8 @@ import { Layout } from "../../layout/Layout";
 
 export const Dashboard = () => {
   return (
-    <div>
-      <Layout>
-        <Hero />
-      </Layout>
-    </div>
+    <Layout>
+      <Hero />
+    </Layout>
   );
 };
