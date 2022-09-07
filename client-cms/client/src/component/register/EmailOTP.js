@@ -28,7 +28,7 @@ export const EmailOTP = () => {
     e.preventDefault();
     const { password, confirmPassword, otp } = form;
     const result = await resetPassword({ ...email, otp, password });
-    result.status === "success" && alert(result.message);
+    result.status === "success" && alert(result.message) && navigate("/");
   };
   return showForm === "otp" ? (
     <div className="Auth-form-container">

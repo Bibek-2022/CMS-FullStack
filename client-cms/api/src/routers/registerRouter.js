@@ -147,6 +147,11 @@ route.patch("/new-password", async (req, res, next) => {
           message: "Password updated successfully",
         });
       }
+    } else {
+      return res.json({
+        status: "error",
+        message: "OTP not correct",
+      });
     }
   } catch (error) {
     next(error);
