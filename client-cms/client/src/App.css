@@ -46,3 +46,8 @@ label {
 img {
   width: 100%;
 }
+
+.custom {
+  font-size: larger;
+  font-weight: 450;
+}

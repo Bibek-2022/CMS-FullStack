@@ -1,9 +1,25 @@
-import React from "react";
-import Container from "react-bootstrap/Container";
-import Nav from "react-bootstrap/Nav";
-import Navbar from "react-bootstrap/Navbar";
-import NavDropdown from "react-bootstrap/NavDropdown";
+import React, { useState, useEffect } from "react";
 export const Header = () => {
+  const [scrollPosition, setScrollPosition] = useState(0);
+
+  const handleScroll = () => {
+    const position = window.pageYOffset;
+    setScrollPosition(position);
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+  console.log(scrollPosition);
+  let headerClass =
+    "navbar fixed-top navbar-expand-lg navbar-dark p-md-3 bold custom";
+  if (scrollPosition > 900) {
+    headerClass = "navbar fixed-top navbar-expand-lg bg-light color-black";
+  }
   return (
     // <Navbar collapseOnSelect expand="lg" className="navbar-transparent">
     //   <Container>
@@ -34,13 +50,13 @@ export const Header = () => {
     //     </Navbar.Collapse>
     //   </Container>
     // </Navbar>
-    <nav class="navbar fixed-top navbar-expand-lg navbar-dark p-md-3">
-      <div class="container">
-        <a class="navbar-brand" href="#">
+    <nav className={headerClass}>
+      <div className="container">
+        <a className="navbar-brand" href="#">
           Web Zone
         </a>
         <button
-          class="navbar-toggler"
+          className="navbar-toggler"
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#navbarNav"
@@ -48,34 +64,34 @@ export const Header = () => {
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
-          <span class="navbar-toggler-icon"></span>
+          <span className="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <div class="mx-auto"></div>
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link text-white" href="#">
+        <div className="collapse navbar-collapse" id="navbarNav">
+          <div className="mx-auto"></div>
+          <ul className="navbar-nav">
+            <li className="nav-item">
+              <a className="nav-link" href="#">
                 Home
               </a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link text-white" href="#">
+            <li className="nav-item">
+              <a className="nav-link" href="#">
                 About
               </a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link text-white" href="#">
+            <li className="nav-item">
+              <a className="nav-link" href="#">
                 Blog
               </a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link text-white" href="#">
+            <li className="nav-item">
+              <a className="nav-link" href="#">
                 Pricing
               </a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link text-white" href="#">
+            <li className="nav-item">
+              <a className="nav-link" href="#">
                 Contact
               </a>
             </li>
