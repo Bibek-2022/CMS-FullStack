@@ -18,7 +18,8 @@ export const Header = () => {
   let headerClass =
     "navbar fixed-top navbar-expand-lg navbar-dark p-md-3 bold custom";
   if (scrollPosition > 900) {
-    headerClass = "navbar fixed-top navbar-expand-lg bg-light color-black";
+    headerClass =
+      "navbar fixed-top navbar-expand-lg bg-light color-black shadowa";
   }
   return (
     // <Navbar collapseOnSelect expand="lg" className="navbar-transparent">
@@ -53,7 +54,7 @@ export const Header = () => {
     <nav className={headerClass}>
       <div className="container">
         <a className="navbar-brand" href="#">
-          Web Zone
+          Shop Me
         </a>
         <button
           className="navbar-toggler"
@@ -77,7 +78,7 @@ export const Header = () => {
             </li>
             <li className="nav-item">
               <a className="nav-link" href="#">
-                About
+                Product
               </a>
             </li>
             <li className="nav-item">
@@ -87,7 +88,7 @@ export const Header = () => {
             </li>
             <li className="nav-item">
               <a className="nav-link" href="#">
-                Pricing
+                Login
               </a>
             </li>
             <li className="nav-item">
