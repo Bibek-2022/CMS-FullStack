@@ -9,8 +9,8 @@ export const fetchProductsAction = () => async (dispatch) => {
   status === "success" && dispatch(setProducts(products));
 };
 
-export const fetchSingleProductAction = (_id) => async (dispatch) => {
-  const { status, message, products } = await getsingleProduct(_id);
+// export const fetchSingleProductAction = (_id) => async (dispatch) => {
+//   const { status, message, products } = await getsingleProduct(_id);
 
-  status === "success" && dispatch(setSelectedProduct(products));
-};
+//   status === "success" && dispatch(setSelectedProduct(products));
+// };
