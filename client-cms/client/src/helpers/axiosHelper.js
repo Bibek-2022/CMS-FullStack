@@ -46,3 +46,25 @@ export const otpRequest = (obj) => {
 export const resetPassword = (obj) => {
   return apiProcessor("patch", resetEP, obj);
 };
+
+//  Products
+
+export const getProducts = () => {
+  const option = {
+    method: "get",
+    url: productEP,
+    data: null,
+    privateAPI: true,
+  };
+
+  return apiProcessor(option);
+};
+export const getsingleProduct = (_id) => {
+  const option = {
+    method: "get",
+    url: productEP + "/" + _id,
+    privateAPI: true,
+  };
+
+  return apiProcessor(option);
+};
