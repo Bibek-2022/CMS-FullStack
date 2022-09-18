@@ -4,6 +4,7 @@ const registerEP = "http://localhost:8001/api/v1/register";
 const loginEP = "http://localhost:8001/api/v1/login";
 const otpEP = rootUrl + "/register/otp";
 const resetEP = rootUrl + "/register/new-password";
+const productEP = "http://localhost:8000/api/v1/products";
 const apiProcessor = async (method, url, data) => {
   try {
     const response = await axios({
@@ -50,21 +51,23 @@ export const resetPassword = (obj) => {
 //  Products
 
 export const getProducts = () => {
-  const option = {
-    method: "get",
-    url: productEP,
-    data: null,
-    privateAPI: true,
-  };
+  // const option = {
+  //   method: "get",
+  //   url: productEP,
+  //   data: null,
+  //   privateAPI: true,
+  // };
 
-  return apiProcessor(option);
+  // return apiProcessor(option);
+  return apiProcessor("get", productEP);
 };
 export const getsingleProduct = (_id) => {
-  const option = {
-    method: "get",
-    url: productEP + "/" + _id,
-    privateAPI: true,
-  };
+  // const option = {
+  //   method: "get",
+  //   url: productEP + "/" + _id,
+  //   privateAPI: true,
+  // };
 
-  return apiProcessor(option);
+  // return apiProcessor(option);
+  return apiProcessor("get", productEP, obj);
 };

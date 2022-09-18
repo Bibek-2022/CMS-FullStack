@@ -1,8 +1,6 @@
 import { toast } from "react-toastify";
-import {
-  getProducts,
-  getsingleProduct,
-} from "../../components/helpers/axiosHelper";
+import { getProducts, getsingleProduct } from "../../helpers/axiosHelper";
+
 import { setProducts, setSelectedProduct } from "./productSlice";
 
 export const fetchProductsAction = () => async (dispatch) => {
