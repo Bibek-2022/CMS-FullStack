@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { fetchProductsAction } from "../../pages/product/productAction";
 import { useDispatch, useSelector } from "react-redux";
+import { Cards } from "./Cards";
 
 export const ProductList = () => {
   const dispatch = useDispatch();
@@ -12,5 +13,10 @@ export const ProductList = () => {
     !displayProducts.length && dispatch(fetchProductsAction());
     products.length && setDisplayProduct(products);
   }, [products, dispatch, displayProducts]);
-  return <div>ProductList</div>;
+  return (
+    <div>
+      ProductList
+      <Cards />
+    </div>
+  );
 };
