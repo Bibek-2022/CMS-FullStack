@@ -15,8 +15,15 @@ export const ProductList = () => {
   }, [products, dispatch, displayProducts]);
   return (
     <div>
-      ProductList
-      <Cards />
+      <h1 className="text-center">Our Products</h1>
+      <div className="d-flex align-content-start flex-wrap">
+        <Cards />
+        <Cards />
+        <Cards />
+        <Cards />
+        <Cards />
+        <Cards />
+      </div>
     </div>
   );
 };

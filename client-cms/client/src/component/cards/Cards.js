@@ -2,68 +2,32 @@ import React from "react";
 import "./cards.css";
 export const Cards = () => {
   return (
-    <div class="row">
-      <div class="col 14 m3 s14 offset-m0 offset-14">
-        <div class="product-card">
-          <div class="card  z-depth-4">
-            <div class="card-image">
-              <a
-                href="#"
-                class="btn-floating btn-large price waves-effect waves-light brown darken-3"
-              >
-                5 €
-              </a>
-              <img
-                src="https://res.cloudinary.com/landry-bete/image/upload/v1488769144/dessert14_trnhnj.jpg"
-                alt="product-img"
-              />
-              <span class="card-title">
-                <span>Macaron</span>
-              </span>
+    <div class="containers">
+      <div class="card">
+        <img
+          src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MXx8c2hvZXMlMjBuaWtlfGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=60"
+          alt=""
+        />
+        <div class="card-body">
+          <div class="row">
+            <div class="card-title">
+              <h4>Nike Sneaker</h4>
+              <h3>$120</h3>
             </div>
-            <ul class="card-action-buttons">
-              <li>
-                <a
-                  href="https://www.facebook.com/sharer/sharer.php?u=https://codepen.io/lybete/full/jBMNzM/"
-                  target="_blank"
-                  class="btn-floating waves-effect waves-light white"
-                >
-                  <i class="material-icons grey-text text-darken-3">share</i>
-                </a>
-              </li>
-              <li>
-                <a class="btn-floating waves-effect waves-light red accent-2">
-                  <i class="material-icons like">favorite_border</i>
-                </a>
-              </li>
-              <li>
-                <a id="buy" class="btn-floating waves-effect waves-light blue">
-                  <i class="material-icons buy">add_shopping_cart</i>
-                </a>
-              </li>
-            </ul>
-            <div class="card-content">
-              <div class="row">
-                <div class="col s12">
-                  <p>
-                    <strong>Description:</strong> <br />
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Curabitur ornare auctor metus vel mollis.
-                  </p>
-                </div>
-              </div>
-              <div class="row">
-                <div style="width: 95%; margin: auto;">
-                  <div class="chip">Dessert</div>
-                  <div class="chip">French</div>
-                  <div class="chip">Sweet</div>
-                  <div class="chip">Chocolate</div>
-                  <div class="chip">
-                    <a href="#">More...</a>
-                  </div>
-                </div>
-              </div>
+            <div class="view-btn">
+              <a href="">View Details</a>
             </div>
+          </div>
+          <hr />
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi,
+            dignissimos.
+          </p>
+          <div class="btn-group">
+            <div class="btn">
+              <a href="">Buy Now</a>
+            </div>
+            <a href=""> Cancel</a>
           </div>
         </div>
       </div>
