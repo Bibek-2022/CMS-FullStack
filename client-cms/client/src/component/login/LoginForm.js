@@ -4,7 +4,8 @@ import { loginUser } from "../../helpers/axiosHelper";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
 import { loginAction } from "../../pages/login/loginAction";
-
+import { GoogleLogin } from "react-google-login";
+import { GLogin } from "./GLogin";
 export const LoginForm = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -23,6 +24,21 @@ export const LoginForm = () => {
     const { name, value } = e.target;
     setForm({ ...form, [name]: value });
     // console.log(form);
+  };
+
+  // google login
+  const handleLogin = async (googleData) => {
+    const res = await fetch("/api/v1/auth/google", {
+      method: "POST",
+      body: JSON.stringify({
+        token: googleData.tokenId,
+      }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const data = await res.json();
+    // store returned user somehow
   };
 
   const handleOnSubmit = async (e) => {
@@ -62,6 +78,14 @@ export const LoginForm = () => {
               Submit
             </button>
           </div>
+          {/* <GoogleLogin
+            clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
+            buttonText="Log in with Google"
+            onSuccess={handleLogin}
+            onFailure={handleLogin}
+            cookiePolicy={"single_host_origin"}
+          /> */}
+          <GLogin />
           <p className="d-flex justify-content-between mt-2">
             <div>
               <Link to="/forgot-password">Forgot password</Link>

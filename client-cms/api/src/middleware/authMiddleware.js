@@ -1,5 +1,6 @@
 import { verifyAccessJWT } from "../helpers/jwtHelper.js";
 import { getOneAdmin } from "../models/adminUser/AdminModel.js";
+import { getOneUser } from "../models/clientUser/ClientModel.js";
 
 import { getSession } from "../models/session/SessionModel.js";
 
@@ -26,12 +27,12 @@ export const adminAuth = async (req, res, next) => {
 
         // get user info and do next
         if (existIbDB?._id) {
-          const admin = await getOneAdmin({
+          const user = await getOneUser({
             email: decoded.email,
           });
 
-          if (admin?._id) {
-            req.adminInfo = admin;
+          if (user?._id) {
+            req.adminInfo = user;
             return next();
           }
         }
