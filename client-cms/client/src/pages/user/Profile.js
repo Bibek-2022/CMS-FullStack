@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 export const Profile = () => {
   const dispatch = useDispatch();
 
-  const { customers } = useSelector((state) => state.customers);
+  const { customers } = useSelector((state) => state.user);
 
   useEffect(() => {
     dispatch(getCustomersAction());
