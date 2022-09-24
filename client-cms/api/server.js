@@ -29,10 +29,12 @@ const limiter = rateLimit({
 // Apply the rate limiting middleware to all requests
 app.use(limiter);
 import registerRouter from "./src/routers/registerRouter.js";
+import mailRouter from "./src/routers/mailRouter.js";
 import loginRouter from "./src/routers/loginRouter.js";
 
 // Routers
 app.use("/api/v1/register", registerRouter);
+app.use("/api/v1/auth/google", mailRouter);
 app.use("/api/v1/login", loginRouter);
 
 /* The above code is creating a server and listening to port . */
