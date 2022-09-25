@@ -20,7 +20,19 @@ export const LoginForm = () => {
   const origin =
     (location.state && location.state.from && location.state.from.pathname) ||
     "/";
+  const handleOnChange = (e) => {
+    const { name, value } = e.target;
+    setForm({ ...form, [name]: value });
+    // console.log(form);
+  };
 
+  const handleOnSubmit = async (e) => {
+    e.preventDefault();
+    console.log(form);
+    // const result = await loginUser(form);
+    dispatch(loginAction(form));
+    result._id && (window.location.href = origin);
+  };
   return (
     <div className="Auth-form-container">
       <form className="Auth-form" onSubmit={handleOnSubmit}>

@@ -2,8 +2,10 @@ import React, { useState, useEffect } from "react";
 import { GoogleLogin, GoogleLogout } from "react-google-login";
 import { gapi } from "gapi-script";
 import { loginGoogleUser } from "../../helpers/axiosHelper";
+import { useNavigate } from "react-router-dom";
 
 function GLogin() {
+  const navigate = useNavigate();
   const [profile, setProfile] = useState([]);
   const [form, setForm] = useState("");
   const clientId =
@@ -19,8 +21,13 @@ function GLogin() {
   });
 
   const onSuccess = (res) => {
+    // console.log(res);
     setProfile(res.profileObj);
-    // loginGoogleUser(profile);
+    // console.log(res.tokenId);
+    const obj = {
+      tokenId: res.tokenId,
+    };
+    loginGoogleUser(obj);
   };
 
   const onFailure = (err) => {

@@ -1,10 +1,10 @@
 import { verifyAccessJWT } from "../helpers/jwtHelper.js";
-import { getOneAdmin } from "../models/adminUser/AdminModel.js";
+// import { getOneAdmin } from "../models/adminUser/AdminModel.js";
 import { getOneUser } from "../models/clientUser/ClientModel.js";
 
 import { getSession } from "../models/session/SessionModel.js";
 
-export const adminAuth = async (req, res, next) => {
+export const userAuth = async (req, res, next) => {
   try {
     const { authorization } = req.headers;
     if (authorization) {
