@@ -1,32 +1,61 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import GoogleLogin from "react-google-login";
+import React, { useState, useEffect } from "react";
+import { GoogleLogin, GoogleLogout } from "react-google-login";
+import { gapi } from "gapi-script";
 
-// or
-// import { GoogleLogin } from "react-google-login";
+function GLogin() {
+  const [profile, setProfile] = useState([]);
+  const clientId =
+    "386932037035-k8v833noqjk7m4auae0t83vnkrqvvg3t.apps.googleusercontent.com";
+  useEffect(() => {
+    const initClient = () => {
+      gapi.client.init({
+        clientId: clientId,
+        scope: "",
+      });
+    };
+    gapi.load("client:auth2", initClient);
+  });
 
-export const GLogin = () => {
-  const handleLogin = async (googleData) => {
-    console.log(googleData);
-    const res = await fetch("http://localhost:8001/api/v1/auth/google", {
-      method: "POST",
-      body: JSON.stringify({
-        token: googleData.tokenId,
-      }),
-    });
-    const data = await res.json();
-    // store returned user in a context?
+  const onSuccess = (res) => {
+    setProfile(res.profileObj);
   };
+  console.log(profile);
+  const onFailure = (err) => {
+    console.log("failed", err);
+  };
+
+  const logOut = () => {
+    setProfile(null);
+  };
+
   return (
     <div>
+      <br></br>
+      {/* {profile ? (
+        <div>
+          <img src={profile.imageUrl} alt="user image" />
+          <h3>User Logged in</h3>
+          <p>Name: {profile.name}</p>
+          <p>Email Address: {profile.email}</p>
+          <br />
+          <br />
+          <GoogleLogout
+            clientId={clientId}
+            buttonText="Log out"
+            onLogoutSuccess={logOut}
+          />
+        </div>
+      ) :  */}
+
       <GoogleLogin
-        clientId="620124268448-q0ntnjshpmf175ol52dcn6hc6va0pqtn.apps.googleusercontent.com"
-        buttonText="Login"
-        className="ct-button ct-button--secondary"
-        onSuccess={handleLogin}
-        onFailure={handleLogin}
-        cookiePolicy="single_host_origin"
+        clientId={clientId}
+        buttonText="Sign in with Google"
+        onSuccess={onSuccess}
+        onFailure={onFailure}
+        cookiePolicy={"single_host_origin"}
+        isSignedIn={true}
       />
     </div>
   );
-};
+}
+export default GLogin;

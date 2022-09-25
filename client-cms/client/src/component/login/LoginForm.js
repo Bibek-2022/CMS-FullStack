@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
 import { loginAction } from "../../pages/login/loginAction";
 import { GoogleLogin } from "react-google-login";
-import { GLogin } from "./GLogin";
+import GLogin from "./GLogin";
 export const LoginForm = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
