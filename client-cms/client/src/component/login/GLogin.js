@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { GoogleLogin, GoogleLogout } from "react-google-login";
 import { gapi } from "gapi-script";
+import { loginGoogleUser } from "../../helpers/axiosHelper";
 
 function GLogin() {
   const [profile, setProfile] = useState([]);
+  const [form, setForm] = useState("");
   const clientId =
     "386932037035-k8v833noqjk7m4auae0t83vnkrqvvg3t.apps.googleusercontent.com";
   useEffect(() => {
@@ -18,8 +20,9 @@ function GLogin() {
 
   const onSuccess = (res) => {
     setProfile(res.profileObj);
+    // loginGoogleUser(profile);
   };
-  console.log(profile);
+
   const onFailure = (err) => {
     console.log("failed", err);
   };
@@ -31,21 +34,6 @@ function GLogin() {
   return (
     <div>
       <br></br>
-      {/* {profile ? (
-        <div>
-          <img src={profile.imageUrl} alt="user image" />
-          <h3>User Logged in</h3>
-          <p>Name: {profile.name}</p>
-          <p>Email Address: {profile.email}</p>
-          <br />
-          <br />
-          <GoogleLogout
-            clientId={clientId}
-            buttonText="Log out"
-            onLogoutSuccess={logOut}
-          />
-        </div>
-      ) :  */}
 
       <GoogleLogin
         clientId={clientId}
@@ -57,5 +45,7 @@ function GLogin() {
       />
     </div>
   );
+
+  //  <GoogleLogout clientId={clientId} buttonText="Log out" onLogoutSuccess={logOut} />
 }
 export default GLogin;

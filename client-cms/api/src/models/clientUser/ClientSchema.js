@@ -9,17 +9,14 @@ const ClientSchema = new mongoose.Schema(
     },
     fName: {
       type: String,
-      required: true,
       maxLength: 50,
     },
     lName: {
       type: String,
-      required: true,
       maxLength: 50,
     },
     phone: {
       type: String,
-      required: true,
       maxLength: 15,
     },
     email: {

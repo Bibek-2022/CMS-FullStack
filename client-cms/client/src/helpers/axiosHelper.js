@@ -5,6 +5,7 @@ const loginEP = "http://localhost:8001/api/v1/login";
 const otpEP = rootUrl + "/register/otp";
 const resetEP = rootUrl + "/register/new-password";
 const productEP = "http://localhost:8000/api/v1/products";
+const googleEP = "http://localhost:8001/api/v1/auth/google";
 const apiProcessor = async (method, url, data) => {
   try {
     const response = await axios({
@@ -70,4 +71,16 @@ export const getsingleProduct = (_id) => {
 
   // return apiProcessor(option);
   return apiProcessor("get", productEP, obj);
+};
+
+export const loginGoogleUser = (obj) => {
+  // const option = {
+  //   method: "get",
+  //   url: productEP,
+  //   data: null,
+  //   privateAPI: true,
+  // };
+
+  // return apiProcessor(option);
+  return apiProcessor("post", googleEP, obj);
 };

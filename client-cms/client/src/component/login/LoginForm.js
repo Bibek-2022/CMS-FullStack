@@ -20,34 +20,7 @@ export const LoginForm = () => {
   const origin =
     (location.state && location.state.from && location.state.from.pathname) ||
     "/";
-  const handleOnChange = (e) => {
-    const { name, value } = e.target;
-    setForm({ ...form, [name]: value });
-    // console.log(form);
-  };
 
-  // google login
-  const handleLogin = async (googleData) => {
-    const res = await fetch("/api/v1/auth/google", {
-      method: "POST",
-      body: JSON.stringify({
-        token: googleData.tokenId,
-      }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    const data = await res.json();
-    // store returned user somehow
-  };
-
-  const handleOnSubmit = async (e) => {
-    e.preventDefault();
-    console.log(form);
-    // const result = await loginUser(form);
-    dispatch(loginAction(form));
-    result._id && (window.location.href = origin);
-  };
   return (
     <div className="Auth-form-container">
       <form className="Auth-form" onSubmit={handleOnSubmit}>
