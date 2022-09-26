@@ -84,3 +84,16 @@ export const loginGoogleUser = (obj) => {
   // return apiProcessor(option);
   return apiProcessor("post", googleEP, obj);
 };
+
+export const requestNewAccessJWT = async () => {
+  const option = {
+    method: "get",
+    url: adminEP + "/accessjwt",
+    privateAPI: true,
+    token: localStorage.getItem("refreshJWT"),
+  };
+
+  const { accessJWT } = await apiProcessor(option);
+  sessionStorage.setItem("accessJWT", accessJWT);
+  return accessJWT;
+};
