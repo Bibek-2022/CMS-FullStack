@@ -37,4 +37,36 @@ route.post("/", async (req, res, next) => {
   }
 });
 
+//return new accessJWT based on the accessJWT given
+route.get("/accessjwt", async (req, res, next) => {
+  try {
+    //receive authorization token, refreshJWT
+    const { authorization } = req.headers;
+    if (authorization) {
+      const decoded = await verifyRefreshJWT(authorization);
+
+      if (decoded?.email) {
+        const user = await getOneAdmin({
+          email: decoded.email,
+          refreshJWT: authorization,
+        });
+
+        if (user?._id) {
+          const accessJWT = await signAccessJWT({ email: decoded.email });
+          return res.json({
+            status: "success",
+            accessJWT,
+          });
+        }
+      }
+    }
+
+    res.status(401).json({
+      status: "error",
+      message: "unauthorized",
+    });
+  } catch (error) {
+    next(error);
+  }
+});
 export default route;

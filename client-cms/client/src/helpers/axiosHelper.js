@@ -88,7 +88,7 @@ export const loginGoogleUser = (obj) => {
 export const requestNewAccessJWT = async () => {
   const option = {
     method: "get",
-    url: adminEP + "/accessjwt",
+    url: loginEP + "/accessjwt",
     privateAPI: true,
     token: localStorage.getItem("refreshJWT"),
   };
