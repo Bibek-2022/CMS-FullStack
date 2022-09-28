@@ -1,7 +1,7 @@
 import React from "react";
 import Button from "react-bootstrap/Button";
 import "./cards.css";
-export const Cards = () => {
+export const Cards = (obj) => {
   return (
     <>
       <div class="shell">
@@ -23,13 +23,7 @@ export const Cards = () => {
                   <div class="title-product">
                     <h3>My face not my heart</h3>
                   </div>
-                  <div class="description-prod">
-                    <p>
-                      Description Product tell me how to change playlist height
-                      size like 600px in html5 player. player good work now
-                      check this link
-                    </p>
-                  </div>
+
                   <div class="card-footer">
                     <div class="wcf-left">
                       <span class="price">Rp500.000</span>
@@ -43,6 +37,7 @@ export const Cards = () => {
                 </div>
               </div>
             </div>
+            {/* Delete After */}
             <div class="col-md-3">
               <div class="wsk-cp-product">
                 <div class="wsk-cp-img">
@@ -151,6 +146,7 @@ export const Cards = () => {
                 </div>
               </div>
             </div>
+            {/* Delete After */}
           </div>
         </div>
       </div>
