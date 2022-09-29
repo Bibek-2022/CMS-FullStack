@@ -2,13 +2,25 @@ import React, { useState, useEffect } from "react";
 import { GoogleLogin, GoogleLogout } from "react-google-login";
 import { gapi } from "gapi-script";
 import { loginGoogleUser, loginUser } from "../../helpers/axiosHelper";
-import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { useLocation, useNavigate } from "react-router-dom";
+import { loginAction } from "../../pages/login/loginAction";
 
 function GLogin() {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { user } = useSelector((state) => state.user);
+  const location = useLocation();
   const [profile, setProfile] = useState([]);
   const [log, setLog] = useState([]);
-  const [form, setForm] = useState("");
+
+  useEffect(() => {
+    user._id && navigate(origin);
+  }, [user, navigate]);
+
+  const origin =
+    (location.state && location.state.from && location.state.from.pathname) ||
+    "/";
   const clientId =
     "386932037035-k8v833noqjk7m4auae0t83vnkrqvvg3t.apps.googleusercontent.com";
   // useEffect(() => {
@@ -30,7 +42,12 @@ function GLogin() {
   const onSubmit = (res) => {
     setLog(res.profileObj);
     const { email, password: googleId } = res.profileObj;
-    loginUser({ email, password });
+    const form = {
+      email,
+      password,
+    };
+    dispatch(loginAction(form));
+    result._id && (window.location.href = origin);
   };
 
   const onFailure = (err) => {

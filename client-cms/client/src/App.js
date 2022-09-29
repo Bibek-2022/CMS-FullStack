@@ -6,6 +6,7 @@ import { EmailVerification } from "./pages/user/EmailVerification.js";
 import { Dashboard } from "./pages/dashboard/Dashboard.js";
 import { VerifyEmail } from "./component/register/VerifyEmail";
 import { ForgotPassword } from "./pages/register/ForgotPassword";
+import { Product } from "./pages/product/Product.js";
 function App() {
   return (
     <div>
@@ -17,6 +18,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/admin-verification" element={<EmailVerification />} />
+          <Route path="/products" element={<Product />} />
         </Routes>
       </BrowserRouter>
     </div>

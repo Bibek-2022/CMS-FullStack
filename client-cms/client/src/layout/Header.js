@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 export const Header = () => {
   const [scrollPosition, setScrollPosition] = useState(0);
 
@@ -72,14 +73,14 @@ export const Header = () => {
           <div className="mx-auto"></div>
           <ul className="navbar-nav">
             <li className="nav-item">
-              <a className="nav-link" href="#">
-                Home
-              </a>
+              <Link to="/" className="nav-link">
+                Home{" "}
+              </Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#">
-                Product
-              </a>
+              <Link to="/products" className="nav-link">
+                Product{" "}
+              </Link>
             </li>
             <li className="nav-item">
               <a className="nav-link" href="#">
@@ -87,9 +88,9 @@ export const Header = () => {
               </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#">
-                Login
-              </a>
+              <Link to="/login" className="nav-link">
+                Login{" "}
+              </Link>
             </li>
             <li className="nav-item">
               <a className="nav-link" href="#">
