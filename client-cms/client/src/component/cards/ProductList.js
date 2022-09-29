@@ -10,7 +10,7 @@ export const ProductList = () => {
   const { products } = useSelector((state) => state.products);
 
   useEffect(() => {
-    !displayProducts.length && dispatch(fetchProductsAction());
+    dispatch(fetchProductsAction());
     products.length && setDisplayProduct(products);
   }, [products, dispatch, displayProducts]);
   return (
@@ -126,21 +126,6 @@ export const ProductList = () => {
         <div className="">
           <Cards />
         </div>
-        {/* <div className="">
-          <Cards />
-        </div>
-        <div className="">
-          <Cards />
-        </div>
-        <div className="">
-          <Cards />
-        </div>
-        <div className="">
-          <Cards />
-        </div>
-        <div className="">
-          <Cards />
-        </div> */}
       </div>
     </div>
   );

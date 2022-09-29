@@ -10,24 +10,21 @@ function GLogin() {
   const [form, setForm] = useState("");
   const clientId =
     "386932037035-k8v833noqjk7m4auae0t83vnkrqvvg3t.apps.googleusercontent.com";
-  useEffect(() => {
-    const initClient = () => {
-      gapi.client.init({
-        clientId: clientId,
-        scope: "",
-      });
-    };
-    gapi.load("client:auth2", initClient);
-  });
+  // useEffect(() => {
+  //   const initClient = () => {
+  //     gapi.client.init({
+  //       clientId: clientId,
+  //       scope: "",
+  //     });
+  //   };
+  //   gapi.load("client:auth2", initClient);
+  // });
 
   const onSuccess = (res) => {
     // console.log(res);
     setProfile(res.profileObj);
     // console.log(res.tokenId);
-    const obj = {
-      tokenId: res.tokenId,
-    };
-    loginGoogleUser(obj);
+    loginGoogleUser(profile);
   };
 
   const onFailure = (err) => {
@@ -44,15 +41,18 @@ function GLogin() {
 
       <GoogleLogin
         clientId={clientId}
-        buttonText="Sign in with Google"
+        buttonText="Sign up with Google"
         onSuccess={onSuccess}
         onFailure={onFailure}
         cookiePolicy={"single_host_origin"}
         isSignedIn={true}
       />
+      <GoogleLogout
+        clientId={clientId}
+        buttonText="Log out"
+        onLogoutSuccess={logOut}
+      />
     </div>
   );
-
-  //  <GoogleLogout clientId={clientId} buttonText="Log out" onLogoutSuccess={logOut} />
 }
 export default GLogin;
