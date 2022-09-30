@@ -10,9 +10,10 @@ export const ProductList = () => {
   const { products } = useSelector((state) => state.products);
 
   useEffect(() => {
-    dispatch(fetchProductsAction());
+    !displayProducts.length && dispatch(fetchProductsAction());
     products.length && setDisplayProduct(products);
   }, [products, dispatch, displayProducts]);
+  console.log(displayProducts);
   return (
     <div>
       <h1 className="text-center">Our Products</h1>
@@ -124,6 +125,9 @@ export const ProductList = () => {
       </div>
       <div className="d-flex flex-wrap justify-content-center align-items-center gap-5">
         <div className="">
+          {displayProducts.map((product) => {
+            return <Cards product={product} />;
+          })}
           <Cards />
         </div>
       </div>

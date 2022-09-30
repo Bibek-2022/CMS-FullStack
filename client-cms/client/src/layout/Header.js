@@ -15,7 +15,7 @@ export const Header = () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
-  console.log(scrollPosition);
+
   let headerClass =
     "navbar fixed-top navbar-expand-lg navbar-dark p-md-3 bold custom";
   if (scrollPosition > 900) {
