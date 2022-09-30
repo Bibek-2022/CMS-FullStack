@@ -3,13 +3,11 @@ import { Link } from "react-router-dom";
 import "./cards.css";
 const API_ROOT_URL = "http://localhost:8000/";
 export const Cards = (obj) => {
-  console.log(obj);
   return (
     <>
       <div className="card">
         <img
           src={API_ROOT_URL + obj?.product?.thumbnail}
-          alt="Denim Jeans"
           crossOrigin="anonymous"
           width="100%"
         />
