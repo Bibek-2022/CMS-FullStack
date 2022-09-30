@@ -1,9 +1,13 @@
 import React from "react";
+import { CheckoutPage } from "../../component/checkout/CheckoutPage";
 import { Layout } from "../../layout/Layout";
+
 export const Checkout = () => {
   return (
     <div>
-      <Layout>This is Checkout</Layout>
+      <Layout>
+        <CheckoutPage />
+      </Layout>
     </div>
   );
 };

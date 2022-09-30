@@ -123,13 +123,16 @@ export const ProductList = () => {
           </div>
         </div>
       </div>
-      <div className="d-flex flex-wrap justify-content-center align-items-center gap-5">
-        <div className="">
-          {displayProducts.map((product) => {
-            return <Cards product={product} />;
-          })}
-          <Cards />
-        </div>
+
+      <div className="container d-flex flex-wrap justify-content-center align-items-center gap-5">
+        {displayProducts.map((product) => {
+          return (
+            <div>
+              <Cards product={product} />
+            </div>
+          );
+        })}
+        <Cards />
       </div>
     </div>
   );
