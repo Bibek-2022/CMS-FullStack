@@ -1,5 +1,86 @@
 import React from "react";
-
+import "./category.css";
 export const Category = () => {
-  return <div>Category</div>;
+  return (
+    <div className="container d-flex flex-wrap justify-content-center align-items-center gap-5">
+      <div class="card text-center p-3  ">
+        <blockquote class="blockquote mb-0">
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
+            posuere erat.
+          </p>
+          <footer class="blockquote-footer">
+            <small>
+              Someone famous in <cite title="Source Title">Source Title</cite>
+            </small>
+          </footer>
+        </blockquote>
+      </div>
+      <div class="card text-center p-3 ">
+        <blockquote class="blockquote mb-0">
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
+            posuere erat.
+          </p>
+          <footer class="blockquote-footer">
+            <small>
+              Someone famous in <cite title="Source Title">Source Title</cite>
+            </small>
+          </footer>
+        </blockquote>
+      </div>
+      <div class="card text-center p-3 ">
+        <blockquote class="blockquote mb-0">
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
+            posuere erat.
+          </p>
+          <footer class="blockquote-footer">
+            <small>
+              Someone famous in <cite title="Source Title">Source Title</cite>
+            </small>
+          </footer>
+        </blockquote>
+      </div>
+      <div class="card text-center p-3 ">
+        <blockquote class="blockquote mb-0">
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
+            posuere erat.
+          </p>
+          <footer class="blockquote-footer">
+            <small>
+              Someone famous in <cite title="Source Title">Source Title</cite>
+            </small>
+          </footer>
+        </blockquote>
+      </div>
+      <div class="card text-center p-3 ">
+        <blockquote class="blockquote mb-0">
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
+            posuere erat.
+          </p>
+          <footer class="blockquote-footer">
+            <small>
+              Someone famous in <cite title="Source Title">Source Title</cite>
+            </small>
+          </footer>
+        </blockquote>
+      </div>
+      <div class="card text-center p-3">
+        <blockquote class="blockquote mb-0">
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
+            posuere erat.
+          </p>
+          <footer class="blockquote-footer">
+            <small>
+              Someone famous in <cite title="Source Title">Source Title</cite>
+            </small>
+          </footer>
+        </blockquote>
+      </div>
+    </div>
+  );
 };
