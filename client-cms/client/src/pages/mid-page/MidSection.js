@@ -1,9 +1,12 @@
 import React from "react";
+import { Category } from "../../component/mid/Category";
 
 export const MidSection = () => {
   return (
-    <div>
-      <h1>Top </h1>
+    <div className="d-flex justify-content-center">
+      <div className="">
+        <Category />{" "}
+      </div>
     </div>
   );
 };
