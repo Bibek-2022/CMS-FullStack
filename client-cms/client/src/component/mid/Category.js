@@ -1,5 +1,6 @@
 import React from "react";
 import "./category.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 export const Category = () => {
   return (
     <>
@@ -44,7 +45,7 @@ export const Category = () => {
           <div class="overlay">
             <div class="items"></div>
             <div class="items head">
-              <p>Flower Embroidery Hoop Art</p>
+              <p>TSHIRT</p>
               <hr />
             </div>
             <div class="items price">
@@ -103,8 +104,10 @@ export const Category = () => {
               <p class="new">$345</p>
             </div>
             <div class="items cart">
-              <i class="fa fa-shopping-cart"></i>
-              <span>ADD TO CART</span>
+              {/* <i class="fa fa-shopping-cart"></i>
+              <span>ADD TO CART</span> */}
+              <FontAwesomeIcon icon="fa-solid fa-circle-info" />
+              <span>CHECK OUT</span>
             </div>
           </div>
         </div>
