@@ -18,7 +18,7 @@ export const ProductList = () => {
   const handleOnClick = (e) => {
     const { value } = e.target;
     console.log(value);
-    const filteredProducts = products.filter((product) =>
+    const filteredProducts = displayProducts.filter((product) =>
       product.name.toLowerCase().includes(value.toLowerCase())
     );
     setDisplayProduct(filteredProducts);
