@@ -1,8 +1,21 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./category.css";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchCategoryAction } from "../../pages/mid-page/catAction";
 export const Category = () => {
+  const dispatch = useDispatch();
+  const [cat, setCat] = useState([]);
+
+  const { category } = useSelector((state) => state.category);
+
+  useEffect(() => {
+    !cat.length && dispatch(fetchCategoryAction());
+    category.length && setCat(category);
+  }, [category, dispatch, cat]);
+  console.log(category);
+
   return (
     <>
       <h1 className="text-center p-3 Auth-form-title">Category</h1>
@@ -70,14 +83,15 @@ export const Category = () => {
               <p class="new">$345</p>
             </div>
             <div class="items cart">
-              {/* <i class="fa fa-shopping-cart"></i>
+              {/* <i class="fa fa-shopping-cart"></i> 
               <span>ADD TO CART</span> */}
-              <FontAwesomeIcon icon="fa-solid fa-circle-info" />
+              <i class="fa fa-circle-info "></i>
               {/* <span>CHECK OUT</span> */}
               <span>
-                <button class="button-74" role="button">
-                  <Link to="/products"> Go to Products</Link>
-                </button>
+                <Link to="/products" className="linkk">
+                  {" "}
+                  CHECK IT OUT!
+                </Link>
               </span>
             </div>
           </div>

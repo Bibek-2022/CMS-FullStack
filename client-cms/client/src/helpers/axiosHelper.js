@@ -5,6 +5,7 @@ const loginEP = "http://localhost:8001/api/v1/login";
 const otpEP = rootUrl + "/register/otp";
 const resetEP = rootUrl + "/register/new-password";
 const productEP = "http://localhost:8000/api/v1/products";
+const categoryEP = "http://localhost:8000/api/v1/category";
 const googleEP = "http://localhost:8001/api/v1/auth/google";
 const apiProcessor = async (method, url, data) => {
   try {
@@ -85,6 +86,19 @@ export const loginGoogleUser = (obj) => {
   return apiProcessor("post", googleEP, obj);
 };
 
+//  Category
+
+export const getCategory = () => {
+  // const option = {
+  //   method: "get",
+  //   url: productEP,
+  //   data: null,
+  //   privateAPI: true,
+  // };
+
+  // return apiProcessor(option);
+  return apiProcessor("get", categoryEP);
+};
 export const requestNewAccessJWT = async () => {
   const option = {
     method: "get",
