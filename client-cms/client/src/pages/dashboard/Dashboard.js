@@ -9,7 +9,6 @@ export const Dashboard = () => {
   return (
     <Layout>
       <Hero />
-      <hr />
       <MidSection />
     </Layout>
   );

@@ -14,11 +14,12 @@ export const Category = () => {
     !cat.length && dispatch(fetchCategoryAction());
     category.length && setCat(category);
   }, [category, dispatch, cat]);
-  console.log(category);
 
   return (
     <>
-      <h1 className="text-center p-3 Auth-form-title">Category</h1>
+      <h1 className="text-center p-3 Auth-form-title mt-5">
+        ☀☀☀☀☀☀ HOT PRODUCT ☀☀☀☀☀☀
+      </h1>
       <div className="d-flex flex-wrap justify-content-center align-items-center gap-5 category">
         <div class="container1">
           <div class="overlay">
