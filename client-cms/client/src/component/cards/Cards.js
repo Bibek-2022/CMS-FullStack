@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import "./cards.css";
 const API_ROOT_URL = "http://localhost:8000/";
 export const Cards = (obj) => {
+  console.log(obj);
   return (
     <>
       <div className="card">
@@ -12,7 +13,7 @@ export const Cards = (obj) => {
           crossOrigin="anonymous"
           width="100%"
         />
-        <h3>{obj?.product?.name}</h3>
+        <h1>{obj?.product?.name}</h1>
         <p class="price">{obj?.product?.price}</p>
         <p>{obj?.product?.description}</p>
         <p>
