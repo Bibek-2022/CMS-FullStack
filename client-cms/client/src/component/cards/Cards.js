@@ -4,6 +4,8 @@ import "./cards.css";
 const API_ROOT_URL = "http://localhost:8000/";
 export const Cards = (obj) => {
   console.log(obj);
+  const externalImage = "./images/cat2.jpg";
+
   return (
     // <>
     //   <div className="card">
@@ -26,7 +28,7 @@ export const Cards = (obj) => {
     // </>
     <>
       <div className="d-flex flex-wrap justify-content-center align-items-center gap-5 category">
-        <div class="container1">
+        <div className="container1">
           <div class="overlay">
             <div class="items"></div>
             <div class="items head">
