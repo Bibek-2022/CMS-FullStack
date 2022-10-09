@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { fetchProductsAction } from "../../pages/product/productAction";
 import { useDispatch, useSelector } from "react-redux";
+
 import { Cards } from "./Cards";
-import "./search.css";
+
 export const ProductList = () => {
   const dispatch = useDispatch();
   const [displayProducts, setDisplayProduct] = useState([]);
@@ -16,8 +17,7 @@ export const ProductList = () => {
   console.log(displayProducts);
   return (
     <div>
-      <h1 className="text-center">Our Products</h1>
-      <div className="search">
+      {/* <div className="search">
         <div class="container">
           <div class="row searchFilter gap-2">
             <div class="col-sm-12">
@@ -122,9 +122,26 @@ export const ProductList = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
+      {/* Search bar UI  */}
 
-      <div className="container d-flex flex-wrap justify-content-center align-items-center gap-5">
+      <div className="container">
+        <h1 className="text-center p-5 Auth-form-title mt-5">
+          <bold>P</bold>RODUCTS
+        </h1>
+        <div>
+          <div className="wrapper mb-5">
+            <div className="search">
+              <input
+                id="search"
+                type="search"
+                placeholder="Search your product"
+                autocomplete="off"
+              />
+              <i class="fas fa-search"></i>
+            </div>
+          </div>
+        </div>
         {displayProducts.map((product) => {
           return (
             <div>

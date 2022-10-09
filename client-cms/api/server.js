@@ -37,6 +37,11 @@ app.use("/api/v1/register", registerRouter);
 app.use("/api/v1/auth/google", mailRouter);
 app.use("/api/v1/login", loginRouter);
 
+//server public folder as static content folder
+/* Serving the public folder as static content folder. */
+// const __dirname = path.resolve();
+// app.use(express.static(path.join(__dirname, "public")));
+
 /* The above code is creating a server and listening to port . */
 app.get("/", (req, res) => {
   res.json({

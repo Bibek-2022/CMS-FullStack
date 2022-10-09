@@ -35,7 +35,8 @@ export const Header = () => {
       "navbar fixed-top navbar-expand-lg bg-light color-black shadow";
   }
   return (
-    <nav className={headerClass}>
+    // <nav className={headerClass}>
+    <nav className="navbar fixed-top navbar-expand-lg bg-light color-black shadow">
       <div className="container">
         <a className="navbar-brand" href="#">
           Shop Me
