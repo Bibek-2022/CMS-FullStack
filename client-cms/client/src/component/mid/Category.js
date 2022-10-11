@@ -16,7 +16,7 @@ export const Category = () => {
   }, [category, dispatch, cat]);
 
   return (
-    <>
+    <div className="back p-3">
       <h1 className="text-center p-3 Auth-form-title mt-5">
         ☀☀☀☀☀☀ HOT PRODUCT ☀☀☀☀☀☀
       </h1>
@@ -98,6 +98,6 @@ export const Category = () => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };

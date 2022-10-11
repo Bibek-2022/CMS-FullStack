@@ -114,7 +114,7 @@ export const Header = () => {
             <i class="fas fa-bars"></i>
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            {/* <ul class="navbar-nav me-auto">
+            <ul class="navbar-nav me-auto">
               <li class="nav-item">
                 <a class="nav-link" href="#!">
                   Category
@@ -131,12 +131,12 @@ export const Header = () => {
                   Contact
                 </a>
               </li>
-            </ul> */}
+            </ul>
             {/* start */}
-            <ul className="navbar-nav me-auto">
+            {/* <ul className="navbar-nav me-auto">
               <li className="nav-item">
                 <Link to="/" className="nav-link">
-                  Home{" "}
+                  <strong>Home </strong>
                 </Link>
               </li>
               <li className="nav-item">
@@ -149,7 +149,7 @@ export const Header = () => {
                   Blog
                 </a>
               </li>
-            </ul>
+            </ul> */}
             {/* end */}
             <ul class="navbar-nav d-flex flex-row">
               {user?._id ? (

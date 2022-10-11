@@ -10,6 +10,9 @@
 body {
   background-color: #fef5df;
 } */
+.back {
+  background-color: #e7e1f980;
+}
 .category {
   position: relative;
   margin: 2rem;
