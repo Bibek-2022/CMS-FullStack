@@ -129,7 +129,7 @@ export const ProductList = () => {
         <h1 className="text-center p-5 Auth-form-title mt-5">
           <bold>P</bold>RODUCTS
         </h1>
-        <div>
+        <div className="">
           <div className="wrapper mb-5">
             <div className="search">
               <input
@@ -141,6 +141,18 @@ export const ProductList = () => {
               <i class="fas fa-search"></i>
             </div>
           </div>
+          {/* <div className="wrapper mb-5 col col-4">
+            <div className="search">
+              <button className="btn btn-primary">Add Product</button>
+                id="search"
+                type="search"
+                placeholder="Search your product"
+                autocomplete="off"
+              />
+              <i class="fas fa-search"></i>
+            </div>
+          </div> */}
+          <div>{/* filter with dropdown */}</div>
         </div>
         {displayProducts.map((product) => {
           return (

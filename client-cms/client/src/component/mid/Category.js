@@ -17,7 +17,7 @@ export const Category = () => {
 
   return (
     <div className="back p-3">
-      <h1 className="text-center p-3 Auth-form-title mt-5">
+      <h1 className="text-center p-3 Auth-form-title mt-3">
         ☀☀☀☀☀☀ HOT PRODUCT ☀☀☀☀☀☀
       </h1>
       <div className="d-flex flex-wrap justify-content-center align-items-center gap-5 category">

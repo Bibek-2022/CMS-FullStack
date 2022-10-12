@@ -29,12 +29,12 @@ export const Header = () => {
   //   };
   // }, []);
 
-  let headerClass =
-    "navbar fixed-top navbar-expand-lg navbar-dark p-md-3 bold custom";
-  if (scrollPosition > 900) {
-    headerClass =
-      "navbar fixed-top navbar-expand-lg bg-light color-black shadow";
-  }
+  // let headerClass =
+  //   "navbar fixed-top navbar-expand-lg navbar-dark p-md-3 bold custom";
+  // if (scrollPosition > 900) {
+  //   headerClass =
+  //     "navbar fixed-top navbar-expand-lg bg-light color-black shadow";
+  // }
   return (
     // <nav className={headerClass}>
     // <nav className="navbar fixed-top navbar-expand-lg bg-light color-black shadow">
@@ -114,7 +114,7 @@ export const Header = () => {
             <i class="fas fa-bars"></i>
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto">
+            {/* <ul class="navbar-nav me-auto">
               <li class="nav-item">
                 <a class="nav-link" href="#!">
                   Category
@@ -131,9 +131,9 @@ export const Header = () => {
                   Contact
                 </a>
               </li>
-            </ul>
+            </ul> */}
             {/* start */}
-            {/* <ul className="navbar-nav me-auto">
+            <ul className="navbar-nav me-auto">
               <li className="nav-item">
                 <Link to="/" className="nav-link">
                   <strong>Home </strong>
@@ -144,16 +144,12 @@ export const Header = () => {
                   Product{" "}
                 </Link>
               </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#">
-                  Blog
-                </a>
-              </li>
-            </ul> */}
+            </ul>
             {/* end */}
+
             <ul class="navbar-nav d-flex flex-row">
               {user?._id ? (
-                <li className="nav-item">
+                <li className="nav-item d-block">
                   <a className="nav-link" href="#">
                     {"Welcome " + users?.fName}
                   </a>
@@ -165,6 +161,7 @@ export const Header = () => {
                   </Link>
                 </li>
               )}
+
               <li class="nav-item me-3 me-lg-0">
                 <a class="nav-link" href="#!">
                   <i class="fas fa-shopping-cart"></i>

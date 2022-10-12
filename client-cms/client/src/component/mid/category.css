@@ -11,7 +11,9 @@ body {
   background-color: #fef5df;
 } */
 .back {
+  backdrop-filter: blur(16px);
   background-color: #e7e1f980;
+  margin-top: 3rem;
 }
 .category {
   position: relative;
