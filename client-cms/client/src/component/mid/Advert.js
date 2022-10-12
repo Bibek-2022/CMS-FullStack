@@ -5,7 +5,7 @@ export const Advert = () => {
     <div class="banner animated tada">
       <div class=" big-text animated tada">50% OFF</div>
       <div>YOUR FIRST ORDER</div>
-      <a href="#">Go to store</a>
+      {/* <a href="#">Go to store</a> */}
     </div>
   );
 };
