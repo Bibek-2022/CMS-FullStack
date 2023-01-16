@@ -30,7 +30,7 @@ export const LoginForm = () => {
     e.preventDefault();
     console.log(form);
     // const result = await loginUser(form);
-    dispatch(loginAction(form));
+    const result = dispatch(loginAction(form));
     result._id && (window.location.href = origin);
   };
   return (

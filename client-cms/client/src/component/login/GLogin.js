@@ -44,9 +44,8 @@ function GLogin() {
     const { email, password: googleId } = res.profileObj;
     const form = {
       email,
-      password,
     };
-    dispatch(loginAction(form));
+    const result = dispatch(loginAction(form));
     result._id && (window.location.href = origin);
   };
 
