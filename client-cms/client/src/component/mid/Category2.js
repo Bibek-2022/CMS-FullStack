@@ -3,6 +3,9 @@ import cat1 from "./images/cat1.jpg";
 import cat2 from "./images/cat2.jpg";
 import cat3 from "./images/cat3.jpg";
 import cat4 from "./images/cat4.jpg";
+import cat5 from "./images/cat5.jpg";
+import cat6 from "./images/cat6.jpg";
+import cat7 from "./images/cat7.jpg";
 export default function Category2() {
   const list = [
     {
@@ -27,17 +30,17 @@ export default function Category2() {
     },
     {
       title: "Spots wear",
-      img: cat4,
+      img: cat5,
       price: "$5.30",
     },
     {
       title: "Traditional wear",
-      img: cat4,
+      img: cat6,
       price: "$5.30",
     },
     {
       title: "Accessories",
-      img: cat1,
+      img: cat7,
       price: "$5.50",
     },
   ];
@@ -54,7 +57,7 @@ export default function Category2() {
                   src={item.img}
                   objectFit="cover"
                   width="100%"
-                  height={140}
+                  height={180}
                   alt={item.title}
                 />
               </Card.Body>
