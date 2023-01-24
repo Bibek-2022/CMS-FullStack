@@ -6,44 +6,39 @@ import cat4 from "./images/cat4.jpg";
 export default function Category2() {
   const list = [
     {
-      title: "Orange",
+      title: "Tshirt",
       img: cat1,
       price: "$5.50",
     },
     {
-      title: "Tangerine",
+      title: "Pants",
       img: cat2,
       price: "$3.00",
     },
     {
-      title: "Cherry",
+      title: "Shoes",
       img: cat3,
       price: "$10.00",
     },
     {
-      title: "Lemon",
+      title: "Hoodies",
       img: cat4,
       price: "$5.30",
     },
     {
-      title: "Orange",
+      title: "Spots wear",
+      img: cat4,
+      price: "$5.30",
+    },
+    {
+      title: "Traditional wear",
+      img: cat4,
+      price: "$5.30",
+    },
+    {
+      title: "Accessories",
       img: cat1,
       price: "$5.50",
-    },
-    {
-      title: "Tangerine",
-      img: cat2,
-      price: "$3.00",
-    },
-    {
-      title: "Cherry",
-      img: cat3,
-      price: "$10.00",
-    },
-    {
-      title: "Lemon",
-      img: cat4,
-      price: "$5.30",
     },
   ];
 
@@ -52,7 +47,7 @@ export default function Category2() {
       <h1 className="text-center p-3 Auth-form-title">Category</h1>
       <Grid.Container gap={2} justify="flex-start">
         {list.map((item, index) => (
-          <Grid xs={6} sm={3} key={index}>
+          <Grid xs={6} sm={3} key={index} className=" mt-5">
             <Card isPressable>
               <Card.Body css={{ p: 0 }}>
                 <Card.Image
@@ -72,9 +67,7 @@ export default function Category2() {
                       fontWeight: "$semibold",
                       fontSize: "$sm",
                     }}
-                  >
-                    {item.price}
-                  </Text>
+                  ></Text>
                 </Row>
               </Card.Footer>
             </Card>
