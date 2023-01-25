@@ -1,20 +1,24 @@
 import React, { useEffect } from "react";
 import LoginForm from "../../components/LoginForm";
 import { MainLayout } from "../../layout/MainLayout";
-import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { useLocation, useNavigate } from "react-router-dom";
+import { autoAdminLogin } from "./loginRegisterAction";
+
 const Login = () => {
-  const navigate = useNavigate();
-  const { user } = useSelector((state) => state.user);
+  const dispatch = useDispatch();
+
+  const { user } = useSelector((state) => state.adminUser);
 
   useEffect(() => {
-    user._id && navigate("/dashboard");
-  }, [navigate, user]);
-  console.log(user);
+    !user._id && dispatch(autoAdminLogin());
+  }, [user]);
+
   return (
     <MainLayout>
-      <div className="reg-form d-flex justify-content-center"></div>
-      <LoginForm />
+      <div className="reg-fo rm d-flex justify-content-center">
+        <LoginForm />
+      </div>
     </MainLayout>
   );
 };

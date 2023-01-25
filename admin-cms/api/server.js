@@ -3,8 +3,11 @@ import express from "express";
 import helmet from "helmet";
 import morgan from "morgan";
 import cors from "cors";
+
 const app = express();
 
+const PORT = process.env.PORT || 8000;
+import path from "path";
 // user middleware
 app.use(cors());
 app.use(helmet());
@@ -18,20 +21,39 @@ mongoConnect();
 
 import registerLoginRouter from "./src/routers/registerLoginRouter.js";
 import categoriesRouter from "./src/routers/categoriesRouter.js";
+import paymentMethodRouter from "./src/routers/paymentMethodRouter.js";
+import productRouter from "./src/routers/productRouter.js";
+import adminRouter from "./src/routers/adminRouter.js";
+import reviewRouter from "./src/routers/reviewRouter.js";
+import customerRouter from "./src/routers/customerRouter.js";
+import orderRouter from "./src/routers/orderRouter.js";
+import { adminAuth } from "./src/middlewares/authMiddleware.js";
+
+// api
 app.use("/api/v1/register-login", registerLoginRouter),
-  app.use("/api/v1/category", categoriesRouter);
+  app.use("/api/v1/category", adminAuth, categoriesRouter);
+app.use("/api/v1/payment-method", adminAuth, paymentMethodRouter);
+app.use("/api/v1/products", adminAuth, productRouter);
+app.use("/api/v1/customers", adminAuth, customerRouter);
+app.use("/api/v1/orders", adminAuth, orderRouter);
+app.use("/api/v1/admin", adminRouter);
+app.use("/api/v1/review", reviewRouter);
+
+//server public folder as static content folder
+const __dirname = path.resolve();
+app.use(express.static(path.join(__dirname, "public")));
+
 app.get("/", (req, res) => {
   res.json({
     message: "you reach a e-commerce api",
   });
 });
 
-app.use((error, req, res) => {
-  console.log(error.message);
-  res.status = error.status || 404;
-  res.json({
+app.use((error, req, res, next) => {
+  console.log(error);
+  const status = error.status || 404;
+  res.status(status).json({
     status: "error",
-    status: "error server",
     message: error.message,
   });
 });

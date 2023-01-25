@@ -24,13 +24,13 @@ Content-Type: application/json
 
 ### Admin login
 
-POST http://localhost:8000/login
+POST http://localhost:8000/api/v1/register-login/login
 Content-Type: application/json
 
 {
     
     "email": "bibekheores@gmail.com",
-    "password": "Bibek"
+    "password": "Bibek1"
 }
 
 ### post category
@@ -38,7 +38,136 @@ POST http://localhost:8000/api/v1/category
 Content-Type: application/json
 
 {
-    "status":"inactive",
-    "name":"Electronic",
+    "status":"active",
+    "name":"Sportsasdf",
     "parentCatId":null
 } 
+
+### delete category
+DELETE  http://localhost:8000/api/v1/category
+Content-Type: application/json
+
+{
+    "ids": ["62c8c58bd9d7ef391158ce94"]
+} 
+
+
+### get payment method
+
+GET http://localhost:8000/api/v1/payment-method
+
+### post payment method
+POST http://localhost:8000/api/v1/payment-method
+Content-Type: application/json
+
+{
+    "status":"inactive",
+    "name":"Fight",
+    "description":"Whatever"
+}
+### put payment method
+PUT http://localhost:8000/api/v1/payment-method
+Content-Type: application/json
+
+{
+    "_id": "62d1ff0c6a5ef149b414a06f",
+    "status":"inactive",
+    "name":"Debit",
+    "desc":"ibiebbaisdbf"
+}
+
+### delete payment method
+DELETE http://localhost:8000/api/v1/payment-method/62d238cdd35b6dc876ee8a55
+
+
+### admin get all users
+
+### update pw from profile
+
+PATCH http://localhost:8000/api/v1/admin
+Content-Type: application/json
+
+{
+    "currentPassword": "123450",
+    "password": "asdfasdf",
+    "email": "bibek@gmail.com"
+
+}
+
+
+
+### update pw from profile
+
+PUT http://localhost:8000/api/v1/admin
+Content-Type: application/json
+
+{
+   "fName": "Shyam",
+    "lName": "Karki",
+    "dob": "2020-02-20",
+    "phone": "044444444",
+    "email": "shyam@gmail.com",
+    "Address": "Sydney",
+    "currentPassword": "asdfasdf234A"
+
+}
+
+
+
+### password reset
+
+### request OTP for password reset
+
+POST http://localhost:8000/api/v1/register-login/otp-request
+Content-Type: application/json
+
+{
+    "email": "bibekheroes@gmail.com"
+  
+}
+
+
+### verify OTP for password reset and reset password
+
+PATCH http://localhost:8000/api/v1/register-login/password
+Content-Type: application/json
+
+{
+    "email": "bibekheroes@gmail.com",
+    "otp": "582401",
+    "password": "Bibek1"	
+  
+}
+
+
+
+### admin request new accessJWT
+GET http://localhost:8000/api/v1/admin/accessjwt
+
+
+
+==========================Product API===========================================================
+
+### post product
+POST http://localhost:8000/api/v1/products
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImJpYmVraGVyb2VzQGdtYWlsLmNvbSIsImlhdCI6MTY2MDczMTkzMiwiZXhwIjoxNjYwNzMyODMyfQ.PjJk5WBSI_2ggY7p0Ow7rdksZ1HGTrajgkaOOP43FWs
+
+{
+   "status": "active",
+    "name": "Product1",
+    "catID": "",
+    "description": "Productss1",
+    "sku": "Product1",
+    "price": "100",
+    "category": "",
+    "qty": "10",
+    "salePrice": "90",
+    "saleStartDate": "",
+    "saleEndDate": "",
+    "catID": null
+}
+
+
+### GET Reeiw
+GET http://localhost:8000/api/v1/review
