@@ -31,11 +31,11 @@ import { adminAuth } from "./src/middlewares/authMiddleware.js";
 
 // api
 app.use("/api/v1/register-login", registerLoginRouter),
-  app.use("/api/v1/category", adminAuth, categoriesRouter);
-app.use("/api/v1/payment-method", adminAuth, paymentMethodRouter);
-app.use("/api/v1/products", adminAuth, productRouter);
-app.use("/api/v1/customers", adminAuth, customerRouter);
-app.use("/api/v1/orders", adminAuth, orderRouter);
+  app.use("/api/v1/category", categoriesRouter);
+app.use("/api/v1/payment-method", paymentMethodRouter);
+app.use("/api/v1/products", productRouter);
+app.use("/api/v1/customers", customerRouter);
+app.use("/api/v1/orders", orderRouter);
 app.use("/api/v1/admin", adminRouter);
 app.use("/api/v1/review", reviewRouter);
 

@@ -7,6 +7,9 @@ export const EmailOTP = () => {
   const [showForm, setShowForm] = useState("otp"); // otp || password
   const [email, setEmail] = useState("");
   const [form, setForm] = useState("");
+  const navigate = useNavigate();
+  const location = useLocation();
+
   const handleOnChange = (e) => {
     const { name, value } = e.target;
     setEmail({ ...email, [name]: value });
@@ -20,15 +23,16 @@ export const EmailOTP = () => {
     e.preventDefault();
     const result = await otpRequest(email);
     result.status === "success" &&
-      setShowForm("reset") &&
-      alert(result.message);
+      // alert(result.message) &&
+      setShowForm("reset");
   };
 
   const handleResetPassword = async (e) => {
     e.preventDefault();
     const { password, confirmPassword, otp } = form;
     const result = await resetPassword({ ...email, otp, password });
-    result.status === "success" && alert(result.message) && navigate("/");
+    result.status === "success" && alert(result.message);
+    // && navigate("/");
   };
   return showForm === "otp" ? (
     <div className="Auth-form-container">
@@ -60,15 +64,26 @@ export const EmailOTP = () => {
           <div className="form-group mt-3 p-4">
             <input
               type="text"
-              name="otp"
+              name="email"
               className="form-control mt-1"
-              placeholder="OTP"
+              placeholder="Email"
               onChange={handleChange}
+              // deactivate
             />
           </div>
           <div className="form-group mt-3 p-4">
             <input
               type="text"
+              name="otp"
+              className="form-control mt-1"
+              placeholder="OTP"
+              value={form.otp}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="form-group mt-3 p-4">
+            <input
+              type="password"
               name="password"
               className="form-control mt-1"
               placeholder="New Password"
@@ -77,7 +92,7 @@ export const EmailOTP = () => {
           </div>
           <div className="form-group mt-3 p-4">
             <input
-              type="text"
+              type="password"
               name="confirmPassword"
               className="form-control mt-1"
               placeholder="Confirm Password"
