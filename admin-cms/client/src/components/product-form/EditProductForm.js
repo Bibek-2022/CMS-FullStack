@@ -38,6 +38,7 @@ export const EditProductForm = () => {
   useEffect(() => {
     //fetch cat list if not in the state
     !categories.length && dispatch(getCategoriesAction());
+    console.log(categories);
     setForm(selectedProduct);
   }, [selectedProduct]);
 
@@ -213,7 +214,7 @@ export const EditProductForm = () => {
             <option value=""> -- select Category -- </option>
             {categories.map(
               (item) =>
-                item.parentCatId && (
+                item.status === "active" && (
                   <option
                     key={item._id}
                     value={item._id}

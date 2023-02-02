@@ -29,11 +29,11 @@ export const ProductForm = () => {
   const [images, setImages] = useState([]);
 
   const { categories } = useSelector((state) => state.categories);
-
-  useEffect(() => {
-    //fetch cat list if not in the state
-    !categories.length && dispatch(getCategoriesAction());
-  }, []);
+  !categories.length && dispatch(getCategoriesAction());
+  // useEffect(() => {
+  //   //fetch cat list if not in the state
+  //   !categories.length && dispatch(getCategoriesAction());
+  // },[]);
 
   const handleOnChange = (e) => {
     let { checked, name, value, files } = e.target;
@@ -158,7 +158,7 @@ export const ProductForm = () => {
             <option value=""> -- select Category -- </option>
             {categories.map(
               (item) =>
-                item.parentCatId && (
+                item.status === "active" && (
                   <option key={item._id} value={item._id}>
                     {item.name}
                   </option>
