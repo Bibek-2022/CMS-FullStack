@@ -55,10 +55,8 @@ const ProductSchema = new mongoose.Schema(
       required: true,
       default: 0,
     },
-    salePrice: {
+    salesPrice: {
       type: String,
-      required: true,
-      default: "inactive",
     },
     salesStartDate: {
       type: Date,

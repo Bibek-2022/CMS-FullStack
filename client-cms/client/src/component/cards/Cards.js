@@ -1,11 +1,20 @@
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { checkoutAction } from "../../pages/checkout/CheckoutAction";
 import "./cards.css";
 const API_ROOT_URL = "http://localhost:8000/";
 export const Cards = (obj) => {
   console.log(obj);
+
+  //const { checkout } = useSelector((state) => state.checkout);
+  console.log(obj);
   const externalImage = "./images/cat2.jpg";
 
+  const addToCart = (e) => {
+    console.log(e);
+    console.log("add to cart");
+  };
   return (
     // <>
     //   <div className="card">
@@ -41,7 +50,7 @@ export const Cards = (obj) => {
             </div>
             <div class="items cart">
               <i class="fa fa-shopping-cart"></i>
-              <span>ADD TO CART</span>
+              <span onClick={addToCart}>ADD TO CART</span>
             </div>
           </div>
         </div>
@@ -58,7 +67,7 @@ export const Cards = (obj) => {
             </div>
             <div class="items cart">
               <i class="fa fa-shopping-cart"></i>
-              <span>ADD TO CART</span>
+              <span onClick={addToCart}>ADD TO CART</span>
             </div>
           </div>
         </div>
@@ -66,7 +75,7 @@ export const Cards = (obj) => {
           <div class="overlay">
             <div class="items"></div>
             <div class="items head">
-              <p>Flower Embroidery Hoop Art</p>
+              <p>Hoodie</p>
               <hr />
             </div>
             <div class="items price">
@@ -75,7 +84,7 @@ export const Cards = (obj) => {
             </div>
             <div class="items cart">
               <i class="fa fa-shopping-cart"></i>
-              <span>ADD TO CART</span>
+              <span onClick={addToCart}>ADD TO CART</span>
             </div>
           </div>
         </div>

@@ -4,17 +4,28 @@ import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCategoryAction } from "../../pages/mid-page/catAction";
+import { checkoutAction } from "../../pages/checkout/CheckoutAction";
 export const Category = () => {
   const dispatch = useDispatch();
   const [cat, setCat] = useState([]);
-
+  //const { checkout } = useSelector((state) => state.checkout);
   const { category } = useSelector((state) => state.category);
+  const [items, setItems] = useState([]);
 
+  // useEffect(() => {
+  //   localStorage.setItem("items", JSON.stringify(items));
+  // }, [items]);
   useEffect(() => {
     !cat.length && dispatch(fetchCategoryAction());
     category.length && setCat(category);
   }, [category, dispatch, cat]);
 
+  const addToCart = (e) => {
+    console.log(e);
+    console.log(e.target);
+    console.log("add to cart");
+    //dispatch(checkoutAction(e));
+  };
   return (
     <div className="back p-3">
       <h1 className="text-center p-3 Auth-form-title mt-3">
@@ -34,7 +45,9 @@ export const Category = () => {
             </div>
             <div class="items cart">
               <i class="fa fa-shopping-cart"></i>
-              <span>ADD TO CART</span>
+              <span value="abcde" onClick={addToCart}>
+                ADD TO CART
+              </span>
             </div>
           </div>
         </div>
