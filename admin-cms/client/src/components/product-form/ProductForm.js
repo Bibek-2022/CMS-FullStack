@@ -59,11 +59,11 @@ export const ProductForm = () => {
 
     for (const key in form) {
       formData.append(key, form[key]);
-      console.log(key, form[key]);
     }
 
     images.length && [...images].map((img) => formData.append("images", img));
     dispatch(postProductsAction(formData));
+    console.log(formData);
   };
 
   const fields = [
@@ -73,6 +73,12 @@ export const ProductForm = () => {
       type: "text",
       placeholder: "Enter product name",
       required: true,
+    },
+    {
+      label: "Gender",
+      name: "gender",
+      type: "text",
+      placeholder: "Enter Gender",
     },
     {
       label: "SKU",
@@ -120,7 +126,7 @@ export const ProductForm = () => {
       rows: 5,
     },
     {
-      label: "Upoad Images",
+      label: "Upload Images",
       name: "images",
       type: "file",
       required: true,

@@ -53,7 +53,7 @@ export const ProductTable = () => {
                     <td>{item.name}</td>
                     <td>{item.qty}</td>
                     <td>${item.price}</td>
-                    <td>${item.salePrice}</td>
+                    <td>${item.salesPrice}</td>
                     <td>
                       {item.salesStartDate && item.salesStartDate.slice(0, 10)}{" "}
                       {" To "}

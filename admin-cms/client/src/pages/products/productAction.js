@@ -21,7 +21,7 @@ export const fetchSingleProductAction = (_id) => async (dispatch) => {
 
 export const postProductsAction = (data) => async (dispatch) => {
   const responsePromise = postProducts(data);
-
+  console.log(data);
   toast.promise(responsePromise, {
     pending: "Please wait...",
   });
