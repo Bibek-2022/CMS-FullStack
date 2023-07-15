@@ -1,8 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { fetchProductsAction } from "../../pages/product/productAction";
 import { useDispatch, useSelector } from "react-redux";
-import { Card, Col, Row, Button, Text } from "@nextui-org/react";
-import { Cards } from "./Cards";
+import {
+  Grid,
+  Card,
+  Col,
+  Row,
+  Button,
+  Text,
+  Pagination,
+} from "@nextui-org/react";
 import "./cards.css";
 const API_ROOT_URL = "http://localhost:8000/";
 export const ProductList = () => {
@@ -39,75 +46,108 @@ export const ProductList = () => {
 
           <div>{/* filter with dropdown */}</div>
         </div>
-        {displayProducts.map((product) => {
-          return (
-            <>
-              <Card css={{ w: "300px", h: "400px", m: 20 }}>
-                <Card.Header css={{ position: "absolute", zIndex: 1, top: 5 }}>
-                  <Col>
-                    <Text
-                      size={12}
-                      weight="bold"
-                      transform="uppercase"
-                      color="#ffffffAA"
+        <Grid.Container gap={2} justify="center">
+          <Grid xs={12}>
+            <Pagination color="primary" total={10} />
+          </Grid>
+          {displayProducts.map((product) => {
+            return (
+              <>
+                <Grid xs={12} sm={4} md={3} l={4} alignItems="center">
+                  <Card
+                    css={{ w: "300px", h: "400px", m: 20 }}
+                    variant="bordered"
+                  >
+                    <Card.Header
+                      css={{ position: "absolute", zIndex: 1, top: 5 }}
                     >
-                      New
-                    </Text>
-                    <Text h3 color="black">
+                      <Col>
+                        <Text
+                          size={12}
+                          weight="bold"
+                          transform="uppercase"
+                          color="#ffffffAA"
+                        >
+                          New
+                        </Text>
+                        {/* <Text h3 color="black">
                       {product.name}
-                    </Text>
-                  </Col>
-                </Card.Header>
-                <Card.Body css={{ p: 0 }}>
-                  <Card.Image
-                    src={API_ROOT_URL + product.thumbnail}
-                    width="100%"
-                    height="100%"
-                    objectFit="cover"
-                    alt="Card example background"
-                  />
-                </Card.Body>
-                <Card.Footer
-                  isBlurred
-                  css={{
-                    position: "absolute",
-                    bgBlur: "#ffffff66",
-                    borderTop:
-                      "$borderWeights$light solid rgba(255, 255, 255, 0.2)",
-                    bottom: 0,
-                    zIndex: 1,
-                  }}
-                >
-                  <Row>
-                    <Col>
-                      <Text color="#000" size={12}>
+                    </Text> */}
+                      </Col>
+                    </Card.Header>
+                    <Card.Body css={{ p: 0 }}>
+                      <Card.Image
+                        src={API_ROOT_URL + product.thumbnail}
+                        crossorigin="anonymous"
+                        width="100%"
+                        height="100%"
+                        objectFit="cover"
+                        alt="Card example background"
+                      />
+                    </Card.Body>
+                    <Card.Footer
+                      isBlurred
+                      css={{
+                        position: "absolute",
+                        bgBlur: "#ffffff66",
+                        borderTop:
+                          "$borderWeights$light solid rgba(255, 255, 255, 0.2)",
+                        bottom: 0,
+                        zIndex: 1,
+                      }}
+                    >
+                      <Row>
+                        <Col>
+                          {/* <Text color="#000" size={12}>
                         Available soon.
-                      </Text>
-                      <Text color="#000" size={12}>
-                        Get notified.
-                      </Text>
-                    </Col>
-                    <Col>
-                      <Row justify="flex-end">
-                        <Button flat auto rounded color="secondary">
-                          <Text
-                            css={{ color: "inherit" }}
-                            size={12}
-                            weight="bold"
-                            transform="uppercase"
-                          >
-                            Checkout
+                      </Text> */}
+                          <Text h5 color="black">
+                            {product.name}
                           </Text>
-                        </Button>
+                          {/* <Text color="#000" size={9}>
+                            Get notified.
+                          </Text> */}
+                        </Col>
+                        <Col
+                          css={{
+                            marginTop: "10px",
+                          }}
+                        >
+                          <Row justify="flex-end">
+                            <Text
+                              css={{
+                                marginRight: "10px",
+                              }}
+                            >
+                              <i class="fa fa-shopping-cart"></i>
+                            </Text>
+                            <Text>
+                              <i class="fa fa-shopping-cart"></i>
+                            </Text>
+                          </Row>
+                        </Col>
+                        {/* <Col>
+                          <Row justify="flex-end">
+                            <Button flat auto rounded color="secondary">
+                              <Text
+                                css={{ color: "inherit" }}
+                                size={12}
+                                weight="bold"
+                                transform="uppercase"
+                              >
+                                Checkout
+                              </Text>
+                            </Button>
+                          </Row>
+                        </Col> */}
                       </Row>
-                    </Col>
-                  </Row>
-                </Card.Footer>
-              </Card>
-            </>
-          );
-        })}
-        <Cards />
+                    </Card.Footer>
+                  </Card>
+                </Grid>
+              </>
+            );
+          })}
+        </Grid.Container>
       </div>
     </div>
   );

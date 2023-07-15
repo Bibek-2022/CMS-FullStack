@@ -12,7 +12,9 @@ const PORT = process.env.PORT || 8001;
 app.use(cors());
 app.use(helmet());
 app.use(morgan("tiny"));
-
+helmet({
+  crossOriginResourcePolicy: false,
+});
 app.use(express.json());
 
 // connection to DB

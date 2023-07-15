@@ -12,7 +12,9 @@ import path from "path";
 app.use(cors());
 app.use(helmet());
 app.use(morgan("tiny"));
-
+helmet({
+  crossOriginResourcePolicy: false,
+});
 app.use(express.json());
 
 //connect to db
