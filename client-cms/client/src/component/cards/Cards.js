@@ -5,12 +5,10 @@ import { checkoutAction } from "../../pages/checkout/CheckoutAction";
 import "./cards.css";
 const API_ROOT_URL = "http://localhost:8000/";
 export const Cards = (obj) => {
-  console.log(obj);
-
   //const { checkout } = useSelector((state) => state.checkout);
-  console.log(obj);
   const externalImage = "./images/cat2.jpg";
-
+  const API_ROOT_URL = "http://localhost:8000/";
+  console.log(API_ROOT_URL + obj.images);
   const addToCart = (e) => {
     console.log(e);
     console.log("add to cart");
@@ -37,6 +35,29 @@ export const Cards = (obj) => {
     // </>
     <>
       <div className="d-flex flex-wrap justify-content-center align-items-center gap-5 category">
+        <div
+          className="container1"
+          style={{ "--background-image": `url(${API_ROOT_URL + obj.images})` }}
+        >
+          <div class="overlay">
+            <div class="items"></div>
+            <div class="items head">
+              <p>{obj.name}</p>
+              <hr />
+            </div>
+            <div class="items price">
+              {/* <p class="old">$699</p> */}
+              <p class="new">${obj.price}</p>
+            </div>
+            <div class="items cart">
+              <i class="fa fa-shopping-cart"></i>
+              <span onClick={addToCart}>ADD TO CART</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* <div className="d-flex flex-wrap justify-content-center align-items-center gap-5 category">
         <div className="container1">
           <div class="overlay">
             <div class="items"></div>
@@ -88,7 +109,7 @@ export const Cards = (obj) => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </>
   );
 };
