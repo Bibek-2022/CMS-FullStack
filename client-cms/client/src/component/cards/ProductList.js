@@ -15,22 +15,44 @@ const API_ROOT_URL = "http://localhost:8000/";
 export const ProductList = () => {
   const dispatch = useDispatch();
   const [displayProducts, setDisplayProduct] = useState([]);
-
   const { products } = useSelector((state) => state.products);
+  const [page, setPage] = useState(1);
+  const [pagProduct, setPagProduct] = useState([]);
+  // console.log(products);
+  // useEffect(() => {
+  //   products.length && setDisplayProduct(products);
+  //   !displayProducts.length && dispatch(fetchProductsAction());
+  // }, [products, dispatch, displayProducts]);
 
   useEffect(() => {
     !displayProducts.length && dispatch(fetchProductsAction());
+    console.log(products);
     products.length && setDisplayProduct(products);
+    setPagProduct(displayProducts.slice(0, 9));
   }, [products, dispatch, displayProducts]);
 
+  // initial product display
+
+  // useEffect(() => {
+  //   const start = (page - 1) * 9;
+  //   const end = page * 9;
+  //   setPagProduct(displayProducts.slice(start, end));
+  // }, [displayProducts, page]);
+
+  const handleOnChange = (e) => {
+    setPage(e);
+    console.log(e);
+    console.log(page);
+    const start = (e - 1) * 9;
+    const end = e * 9;
+    setPagProduct(displayProducts.slice(start, end));
+  };
   return (
     <div>
       {/* Search bar UI  */}
 
       <div className="container">
-        <h1 className="text-center p-5 Auth-form-title mt-5">
-          <bold>P</bold>RODUCTS
-        </h1>
+        <h1 className="text-center p-5 Auth-form-title mt-5">PRODUCTS</h1>
         <div className="">
           <div className="wrapper mb-5">
             <div className="search">
@@ -38,22 +60,26 @@ export const ProductList = () => {
                 id="search"
                 type="search"
                 placeholder="Search your product"
-                autocomplete="off"
+                autoComplete="off"
               />
-              <i class="fas fa-search"></i>
+              <i className="fas fa-search"></i>
             </div>
           </div>
 
           <div>{/* filter with dropdown */}</div>
         </div>
         <Grid.Container gap={2} justify="center">
-          <Grid xs={12}>
-            <Pagination color="primary" total={10} />
-          </Grid>
-          {displayProducts.map((product) => {
+          {pagProduct.map((product, index, array) => {
             return (
               <>
-                <Grid xs={12} sm={4} md={3} l={4} alignItems="center">
+                <Grid
+                  key={product.sku}
+                  xs={12}
+                  sm={4}
+                  md={4}
+                  l={4}
+                  alignItems="center"
+                >
                   <Card
                     css={{ w: "300px", h: "400px", m: 20 }}
                     variant="bordered"
@@ -78,7 +104,7 @@ export const ProductList = () => {
                     <Card.Body css={{ p: 0 }}>
                       <Card.Image
                         src={API_ROOT_URL + product.thumbnail}
-                        crossorigin="anonymous"
+                        crossOrigin="anonymous"
                         width="100%"
                         height="100%"
                         objectFit="cover"
@@ -119,10 +145,10 @@ export const ProductList = () => {
                                 marginRight: "10px",
                               }}
                             >
-                              <i class="fa fa-shopping-cart"></i>
+                              <i className="fa fa-shopping-cart"></i>
                             </Text>
                             <Text>
-                              <i class="fa fa-shopping-cart"></i>
+                              <i className="fa fa-shopping-cart"></i>
                             </Text>
                           </Row>
                         </Col>
@@ -148,6 +174,13 @@ export const ProductList = () => {
             );
           })}
         </Grid.Container>
+        <Pagination
+          loop
+          color="gradient"
+          total={10}
+          initialPage={page}
+          onPageChange={handleOnChange}
+        />
       </div>
     </div>
   );
