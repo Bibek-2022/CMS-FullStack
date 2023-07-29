@@ -30,17 +30,19 @@ export const ProductList = () => {
   useEffect(() => {
     !displayProducts.length && dispatch(fetchProductsAction());
     products.length && setDisplayProduct(products);
-  }, [products, dispatch, displayProducts]);
+  }, [products, dispatch]);
 
-  console.log(products);
-  const handleOnFilter = (e) => {
-    setActive(1);
-    const { value } = e.target;
-    if (value === "all") {
-      setDisplayProduct(products);
-    } else {
-      setDisplayProduct(products.filter((item) => item.status === value));
-    }
+  const handleOnFilterbySearch = (e) => {
+    // Get the value of the input.
+    const value = e.target.value;
+
+    // Filter the `displayProducts` array based on the value of the input.
+    const filteredProducts = products.filter((product) =>
+      product.name.toLowerCase().includes(value.toLowerCase())
+    );
+
+    // Set the state of the `displayProducts` array to the filtered array.
+    setDisplayProduct(filteredProducts);
   };
   // initial product display
 
@@ -75,6 +77,7 @@ export const ProductList = () => {
                 type="search"
                 placeholder="Search your product"
                 autoComplete="off"
+                onChange={handleOnFilterbySearch}
               />
               <i className="fas fa-search"></i>
             </div>
@@ -82,14 +85,14 @@ export const ProductList = () => {
 
           <div>
             {/* filter with dropdown */}
-            <div>
+            {/* <div>
               <Form.Select defaultValue="all" onChange={handleOnFilter}>
                 <option value="all"> -- filter --</option>
                 <option value="processing">Shirt </option>
                 <option value="shipped">Hoodie</option>
                 <option value="cancelled">Shoes </option>
               </Form.Select>
-            </div>
+            </div> */}
           </div>
         </div>
         <Grid.Container gap={2} justify="center">
