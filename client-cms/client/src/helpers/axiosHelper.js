@@ -1,7 +1,7 @@
 import axios from "axios";
-const rootUrl = "http://localhost:8001/api/v1";
-const registerEP = "http://localhost:8001/api/v1/register";
-const loginEP = "http://localhost:8001/api/v1/login";
+const rootUrl = "http://localhost:8002/api/v1";
+const registerEP = "http://localhost:8002/api/v1/register";
+const loginEP = "http://localhost:8002/api/v1/login";
 const otpEP = rootUrl + "/register/otp";
 const resetEP = rootUrl + "/register/new-password";
 const productEP = "http://localhost:8000/api/v1/products";
@@ -71,7 +71,7 @@ export const getsingleProduct = (_id) => {
   // };
 
   // return apiProcessor(option);
-  return apiProcessor("get", productEP, obj);
+  return apiProcessor("get", productEP, _id);
 };
 
 export const loginGoogleUser = (obj) => {

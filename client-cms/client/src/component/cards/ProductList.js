@@ -18,15 +18,12 @@ export const ProductList = () => {
   const dispatch = useDispatch();
   const [displayProducts, setDisplayProduct] = useState([]);
   const { products } = useSelector((state) => state.products);
-  // const [page, setPage] = useState(null);
+
   const [pagProduct, setPagProduct] = useState([]);
   const [active, setActive] = useState(1);
-  // console.log(products);
-  // useEffect(() => {
-  //   products.length && setDisplayProduct(products);
-  //   !displayProducts.length && dispatch(fetchProductsAction());
-  // }, [products, dispatch, displayProducts]);
-
+  //get setUser from redux
+  const { user } = useSelector((state) => state.user);
+  console.log("user", user);
   useEffect(() => {
     !displayProducts.length && dispatch(fetchProductsAction());
     products.length && setDisplayProduct(products);
@@ -44,21 +41,25 @@ export const ProductList = () => {
     // Set the state of the `displayProducts` array to the filtered array.
     setDisplayProduct(filteredProducts);
   };
-  // initial product display
 
-  // useEffect(() => {
-  //   const start = (page - 1) * 9;
-  //   const end = page * 9;
-  //   setPagProduct(displayProducts.slice(start, end));
-  // }, [displayProducts, page]);
+  //add to cart
+  // use local storage to store the cart items
+  const addToCart = (product) => {
+    console.log(product);
+    let cart = localStorage.getItem("cart")
+      ? JSON.parse(localStorage.getItem("cart"))
+      : {};
+    let id = product.sku.toString();
+    cart[id] = cart[id] ? cart[id] : 0;
+    let qty = cart[id] + 1;
+    cart[id] = qty;
+    localStorage.setItem("cart", JSON.stringify(cart));
+    // clear local storage
+    localStorage.clear();
 
-  // const handleOnChange = (e) => {
-  //   console.log(e);
-  //   console.log(displayProducts);
-  //   const start = (e - 1) * 9;
-  //   const end = e * 9;
-  //   setPagProduct(displayProducts.slice(start, end));
-  // };
+    // setCart(cart);
+  };
+
   const ordersPerTable = 9;
   const pages = Math.ceil(displayProducts.length / ordersPerTable);
   const orderStartAt = (active - 1) * ordersPerTable;
@@ -174,7 +175,18 @@ export const ProductList = () => {
                                   marginRight: "10px",
                                 }}
                               >
-                                <i className="fa fa-shopping-cart"></i>
+                                <i
+                                  className="fa fa-shopping-cart"
+                                  onClick={() => {
+                                    if (Object.keys(user).length === 0) {
+                                      console.log(
+                                        "Please Login to add to cart"
+                                      );
+                                    } else {
+                                      addToCart(product); // Execute addToCart only if user exists
+                                    }
+                                  }}
+                                ></i>
                               </Text>
                               <Text>
                                 <i className="fa fa-shopping-cart"></i>
