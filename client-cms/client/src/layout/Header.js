@@ -6,11 +6,13 @@ import "./header.css";
 export const Header = () => {
   const [scrollPosition, setScrollPosition] = useState(0);
   const [users, setUsers] = useState([]);
+  // const [cart, setCart] = useState([]);
 
   const handleScroll = () => {
     const position = window.pageYOffset;
     setScrollPosition(position);
   };
+  let cart = localStorage.getItem("cart");
   const dispatch = useDispatch();
 
   const { user } = useSelector((state) => state.user);
@@ -19,8 +21,18 @@ export const Header = () => {
     // !user.length && dispatch(loginAction());
     !users.length && setUsers(user);
   }, [user]);
-  console.log(users);
-  console.log(user);
+
+  console.log(cart);
+
+  // const handleOnClick_Cart = () => {
+  //   // get the cart items from local storage and update the state
+  //   let cart = localStorage.getItem("cart")
+  //     ? JSON.parse(localStorage.getItem("cart"))
+  //     : {};
+
+  //   setCart(cart);
+  // };
+
   // useEffect(() => {
   //   window.addEventListener("scroll", handleScroll, { passive: true });
 
@@ -164,7 +176,28 @@ export const Header = () => {
 
               <li class="nav-item me-3 me-lg-0">
                 <a class="nav-link" href="#!">
-                  <i class="fas fa-shopping-cart"></i>
+                  {cart ? (
+                    <div className="custom-icon">
+                      <Link to="/checkout">
+                        <i
+                          className="fas fa-shopping-cart pulsating-icon"
+                          // onClick={handleOnClick_Cart}
+                          // style={{ color: "red" }}
+                        ></i>
+                      </Link>
+                      <div className="red-dot pulsating-icon"></div>
+                    </div>
+                  ) : (
+                    // <>
+                    //   <i class="fas fa-shopping-cart fa-stack-1x"></i>
+                    //   <span class="fa-stack-1x cart-badge">5</span>
+                    // </>
+                    <i
+                      class="fas fa-shopping-cart"
+                      // onClick={handleOnClick_Cart}
+                    ></i>
+                  )}
+                  {/* <i class="fas fa-shopping-cart"></i> */}
                 </a>
               </li>
               <li class="nav-item me-3 me-lg-0">

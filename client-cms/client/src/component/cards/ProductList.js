@@ -54,9 +54,9 @@ export const ProductList = () => {
     let qty = cart[id] + 1;
     cart[id] = qty;
     localStorage.setItem("cart", JSON.stringify(cart));
+    console.log("cart", cart);
     // clear local storage
-    localStorage.clear();
-
+    // localStorage.clear();
     // setCart(cart);
   };
 
