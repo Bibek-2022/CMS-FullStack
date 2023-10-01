@@ -6,7 +6,7 @@ import "./header.css";
 export const Header = () => {
   const [scrollPosition, setScrollPosition] = useState(0);
   const [users, setUsers] = useState([]);
-  // const [cart, setCart] = useState([]);
+  //const [cart, setCart] = useState([]);
 
   const handleScroll = () => {
     const position = window.pageYOffset;

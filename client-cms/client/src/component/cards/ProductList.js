@@ -23,7 +23,7 @@ export const ProductList = () => {
   const [active, setActive] = useState(1);
   //get setUser from redux
   const { user } = useSelector((state) => state.user);
-  console.log("user", user);
+
   useEffect(() => {
     !displayProducts.length && dispatch(fetchProductsAction());
     products.length && setDisplayProduct(products);
@@ -45,7 +45,10 @@ export const ProductList = () => {
   //add to cart
   // use local storage to store the cart items
   const addToCart = (product) => {
-    console.log(product);
+    // console.log(product);
+    // !localStorage.getItem("user") &&
+    // localStorage.setItem("user", JSON.stringify(user));
+
     let cart = localStorage.getItem("cart")
       ? JSON.parse(localStorage.getItem("cart"))
       : {};
@@ -183,6 +186,10 @@ export const ProductList = () => {
                                         "Please Login to add to cart"
                                       );
                                     } else {
+                                      localStorage.setItem(
+                                        "user",
+                                        JSON.stringify(user._id)
+                                      );
                                       addToCart(product); // Execute addToCart only if user exists
                                     }
                                   }}
