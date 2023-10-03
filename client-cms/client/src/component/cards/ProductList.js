@@ -1,18 +1,9 @@
+import { Card, Col, Grid, Row, Text } from "@nextui-org/react";
 import React, { useEffect, useState } from "react";
-import { fetchProductsAction } from "../../pages/product/productAction";
 import { useDispatch, useSelector } from "react-redux";
-import { Form, Table } from "react-bootstrap";
-import {
-  Grid,
-  Card,
-  Col,
-  Row,
-  Button,
-  Text,
-  Pagination,
-} from "@nextui-org/react";
-import "./cards.css";
+import { fetchProductsAction } from "../../pages/product/productAction";
 import { CustomPagination } from "../pagination/Pagination";
+import "./cards.css";
 const API_ROOT_URL = "http://localhost:8000/";
 export const ProductList = () => {
   const dispatch = useDispatch();

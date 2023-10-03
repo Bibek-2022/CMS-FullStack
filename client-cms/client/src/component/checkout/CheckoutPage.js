@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from "react";
 import {
   MDBBtn,
   MDBCard,
@@ -11,13 +10,19 @@ import {
   MDBRow,
   MDBTypography,
 } from "mdb-react-ui-kit";
+import { Container, Row, Col, Input, Button, Spacer } from "@nextui-org/react";
+
+// import { Button } from "@nextui-org/react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import Payment from "./Payment";
 export const CheckoutPage = () => {
   const API_ROOT_URL = "http://localhost:8000/";
   // You need to define the 'cart' array before using it in the mapping below.
 
   const [carts, setCart] = useState([]);
   const [total, setTotal] = useState(0);
+  const { products } = useSelector((state) => state.products);
 
   useEffect(() => {
     let cart = localStorage.getItem("cart")
@@ -57,7 +62,6 @@ export const CheckoutPage = () => {
     setCart(cart);
   };
 
-  const { products } = useSelector((state) => state.products);
   let filteredProducts = [];
   //  loop thorugh cart in local storage and get the key
   for (let key in carts) {
@@ -186,73 +190,8 @@ export const CheckoutPage = () => {
                       </div>
                     </MDBCol>
                     {/* payment */}
-                    <MDBCol lg="5" className="px-5 pt-4">
-                      <MDBTypography
-                        tag="h3"
-                        className="mb-5 pt-2 text-center fw-bold text-uppercase"
-                      >
-                        Payment
-                      </MDBTypography>
-                      {/* label */}
-                      <MDBTypography tag="h6" className="mb-3">
-                        Name on card
-                      </MDBTypography>
-                      <MDBInput outline size="lg" className="mb-4" />
-
-                      <MDBTypography tag="h6" className="mb-3">
-                        Card Number
-                      </MDBTypography>
-                      <MDBInput outline size="lg" className="mb-4" />
-                      <MDBRow>
-                        <MDBCol md="4" className="mb-3">
-                          <MDBTypography tag="h6" className="mb-3">
-                            Expiration
-                          </MDBTypography>
-                          <MDBInput outline size="lg" className="mb-4" />
-                        </MDBCol>
-                        <MDBCol md="4" className="mb-3">
-                          <MDBTypography tag="h6" className="mb-3">
-                            CVV
-                          </MDBTypography>
-                          <MDBInput outline size="lg" className="mb-4" />
-                        </MDBCol>
-
-                        {/* Icons for accepting VISA, MASTERCARD and other */}
-                      </MDBRow>
-                      <MDBCol md="6" className="mb-3">
-                        {/* increase size of fonts */}
-                        <MDBTypography tag="h6" className="mb-3">
-                          Accepts:
-                        </MDBTypography>
-                        <MDBTypography tag="h1" className="mb-3 ">
-                          {/* import from fontawesome */}
-                          <MDBIcon fab icon="cc-visa" className="me-1 fa-lg" />
-                          <MDBIcon
-                            fab
-                            icon="cc-mastercard"
-                            className="me-1 fa-lg"
-                          />
-                          <MDBIcon fab icon="cc-amex" className="me-1 fa-lg" />
-                          <MDBIcon
-                            fab
-                            icon="cc-paypal"
-                            className="me-1 fa-lg"
-                          />
-                          <MDBIcon
-                            fab
-                            icon="cc-discover"
-                            className="me-1 fa-lg"
-                          />
-                          <MDBIcon fab icon="cc-jcb" className="me-1 fa-lg" />
-                        </MDBTypography>
-                      </MDBCol>
-                      <MDBBtn
-                        color="primary"
-                        rounded
-                        className="btn-block z-depth-1a"
-                      >
-                        Place order
-                      </MDBBtn>
+                    <MDBCol className="px-5 pt-4">
+                      <Payment total={total} />
                     </MDBCol>
                     {/* end payment */}
                   </MDBRow>
