@@ -47,6 +47,10 @@ export const CheckoutPage = () => {
     setCart(cart);
   };
 
+  useEffect(() => {
+    calculateTotal();
+  }, [carts, products]);
+
   const handleOnSubtract = (sku) => () => {
     // Wrap the handler in another function
     // Get the cart items from local storage and update the state
@@ -88,6 +92,7 @@ export const CheckoutPage = () => {
   };
   // calculate total
   const calculateTotal = () => {
+    console.log("calculate total");
     let newTotal = 0;
     let carts = localStorage.getItem("cart")
       ? JSON.parse(localStorage.getItem("cart"))
