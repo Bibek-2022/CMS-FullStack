@@ -72,9 +72,26 @@ export const CheckoutPage = () => {
     filteredProducts.push(product);
   }
 
+  const handleOnDelete = (sku) => () => {
+    // Wrap the handler in another function
+    // Get the cart items from local storage and update the state
+    let cart = localStorage.getItem("cart")
+      ? JSON.parse(localStorage.getItem("cart"))
+      : {};
+    // delete the item
+    delete cart[sku];
+    // update the local storage
+    localStorage.setItem("cart", JSON.stringify(cart));
+    // update the state
+    calculateTotal();
+    setCart(cart);
+  };
   // calculate total
   const calculateTotal = () => {
     let newTotal = 0;
+    let carts = localStorage.getItem("cart")
+      ? JSON.parse(localStorage.getItem("cart"))
+      : {};
     for (let key in carts) {
       const prod = filteredProducts.find((product) => product[0].sku === key);
       if (prod) {
@@ -130,18 +147,20 @@ export const CheckoutPage = () => {
                             </div>
                             <div className="flex-grow-1 ms-3">
                               <a href="#!" className="float-end text-black">
-                                <MDBIcon fas icon="times" />
+                                <MDBIcon
+                                  fas
+                                  icon="times"
+                                  onClick={handleOnDelete(item[0].sku)}
+                                />
                               </a>
                               <MDBTypography tag="h5">
                                 {item[0].name}{" "}
-                                {/* Replace with actual product data */}
                               </MDBTypography>
                               <MDBTypography
                                 tag="h6"
                                 style={{ color: "#9e9e9e" }}
                               >
                                 Price: {item[0].salesPrice}{" "}
-                                {/* Replace with actual product data */}
                               </MDBTypography>
                               <div className="d-flex align-items-center">
                                 <div className="def-number-input number-input safari_only">
